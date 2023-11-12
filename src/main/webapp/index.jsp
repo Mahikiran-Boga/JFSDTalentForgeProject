@@ -183,6 +183,7 @@
         <a href="#">Jobs</a>
         <a href="#">About</a>
           <a href="#">Settings</a>
+            <a href="/">Logout</a>
         <!-- Add more navigation items here -->
       </nav>
     </div>
