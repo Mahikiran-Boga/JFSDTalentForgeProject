@@ -5,8 +5,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Job Listings</title>
+  <title>TalentForge</title>
+
   <style>
+  .card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
     body {
       margin: 0;
       padding: 0;
@@ -15,9 +28,14 @@
       display: flex;
       height: 100vh;
     }
-   
+
+    #container {
+      display: flex;
+      width: 100%;
+    }
+
     #left-half {
-      flex: 0 0 65%;
+      flex: 0 0 80%;
       overflow-y: auto;
       padding: 20px;
       box-sizing: border-box;
@@ -28,15 +46,23 @@
     }
 
     #search-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      z-index: 1000;
       display: flex;
       align-items: center;
-      margin-bottom: 20px;
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
     }
 
     #search-bar input {
       flex: 1;
       padding: 8px;
       font-size: 16px;
+      width:80px;
     }
 
     #search-bar button {
@@ -46,11 +72,6 @@
       border: none;
       border-radius: 4px;
       cursor: pointer;
-    }
-
-    #logo-img {
-      max-width: 100px;
-      margin-right: 20px;
     }
 
     .job-card {
@@ -79,8 +100,8 @@
     }
 
     #right-half {
-      flex: 0 0 35%;
-      background-color: black;
+      flex: 0 0 20%;
+      background-color: #F9F9FB;
       color: blue;
       display: flex;
       flex-direction: column;
@@ -93,35 +114,30 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
+      margin-top: auto; /* Push the nav items to the bottom */
     }
 
     nav a {
-      color: #fff;
+      color: black;
       text-decoration: none;
       font-weight: bold;
     }
 
-    #profile-avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background-color: #fff; /* You can replace this with the actual image source */
-      background-size: cover;
-      margin-top: 20px;
-    }
+  
   </style>
 </head>
 <body>
-  <div id="left-half">
-    <div id="search-bar">
-     <p target="_top"style="color: darkblue;" width="60px"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆
-   <img src="/images/search.png" width="30px" height="30" />
-</p>
-      <input type="text" placeholder="Search for jobs">
-      <button>Search</button>
-    </div>
+  <div id="container">
+    <div id="left-half">
+      <div id="search-bar">
+        <p style="color: darkblue;"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆 <img src="/images/search.png" width="30px" height="30" /></p>
+        <input type="text" placeholder="Search for jobs">
+        <button class="apply-btn">Search</button>
+      </div>
 
-    <!-- Sample job cards -->
+      <!-- Sample job cards -->
+     <br><br><br>
+         
     <div class="job-card">
       <img src="/images/ibm.png" alt="Company Logo" height="1000px" width="100px">
       <h3>Java Full Stack Developer</h3>
@@ -142,24 +158,35 @@
       <button class="apply-btn">Apply</button>
     </div>
 
-    <!-- Add more job cards here -->
-
-    <!-- Button to load more job cards -->
-    <button id="load-more-btn">Load More</button>
-  </div>
-
-  <div id="right-half">
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Jobs</a>
-      <a href="#">About</a>
-      <!-- Add more navigation items here -->
-    </nav>
-
-    <div id="profile-avatar">
-      <!-- You can replace this with the actual image source -->
+      <!-- Button to load more job cards -->
+      <button id="load-more-btn">Load More</button>
     </div>
+ 
+   <br>
+    <div id="right-half">
+    <br><br><br><br>
+      <div class="card">
+  <img src="/images/wipro.jpg" alt="John" style="width:100%">
+  <h1 style="color: black;">John Doe</h1>
+  <pstyle="color: black;" class="title">CEO & Founder, Example</p>
+  <p>Harvard University</p>
+  <div style="margin: 24px 0;">
+    <a href="#"><i class="fa fa-dribbble"></i></a> 
+    <a href="#"><i class="fa fa-twitter"></i></a>  
+    <a href="#"><i class="fa fa-linkedin"></i></a>  
+    <a href="#"><i class="fa fa-facebook"></i></a> 
   </div>
+</div>
+
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">Jobs</a>
+        <a href="#">About</a>
+          <a href="#">Settings</a>
+        <!-- Add more navigation items here -->
+      </nav>
+    </div>
+     </div>
 
   <script>
     // JavaScript for handling scrolling by revealing additional job cards
@@ -175,4 +202,3 @@
   </script>
 </body>
 </html>
-    
