@@ -130,13 +130,13 @@
   <div id="container">
     <div id="left-half">
       <div id="search-bar">
-        <p style="color: darkblue;"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆 <img src="/images/search.png" width="30px" height="30" /></p>
+       <p style="color: darkblue; font-size: 20px;"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆 <img src="/images/search.png" width="30px" height="30" /></p>
         <input type="text" placeholder="Search for jobs">
         <button class="apply-btn">Search</button>
       </div>
 
       <!-- Sample job cards -->
-     <br><br><br>
+     <br><br><br><br>
          
     <div class="job-card">
       <img src="/images/ibm.png" alt="Company Logo" height="1000px" width="100px">
@@ -144,7 +144,7 @@
       <p>Location: Hyderabad, India</p>
       <p>Skills: SpringBoot, ORM, Databases</p>
       <p>Description: design back-end architecture using multiple technologies. build front-end technologies to create user interfaces. .</p>
-      <p>Package: $X,XXX,XXX</p>
+      <p>Salary: Upto 1000000-1200000/year</p>
       <button class="apply-btn">Apply</button>
     </div>
 
@@ -179,7 +179,7 @@
 </div>
 
       <nav>
-        <a href="#">Home</a>
+        <a href="applicanthome">Home</a>
         <a href="#">Jobs</a>
         <a href="#">About</a>
           <a href="#">Settings</a>
