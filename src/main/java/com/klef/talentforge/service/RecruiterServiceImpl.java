@@ -57,6 +57,12 @@ public class RecruiterServiceImpl implements RecruiterService{
 	    else return null;
 
 	  }
+
+	@Override
+	public Job viewJobByTitleAndDescription(String title, String description) {
+		
+		return jobRepository.viewJobByTitleAndDescription(title, description);
+	}
 	
 
 }

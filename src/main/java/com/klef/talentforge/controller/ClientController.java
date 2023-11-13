@@ -315,7 +315,9 @@ public class ClientController
         	String salary=request.getParameter("salary");
         	byte[] bytes = file.getBytes();
 			Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
-			
+			Job j=recruiterService.viewJobByTitleAndDescription(title, description);
+			if(j==null) {
+					
 			Job job=new Job();
 			job.setJobtitle(title);
 			job.setLocation(location);
@@ -327,6 +329,10 @@ public class ClientController
 			String msg=recruiterService.addjob(job);
 			mv.setViewName("addjob");
 			mv.addObject("msg", msg);
+			}
+			else {
+				mv.addObject("msg", "Failed to Add.This is Already Existing Job");
+			}
 			return mv;
         	
         }

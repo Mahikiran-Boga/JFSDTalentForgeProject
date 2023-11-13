@@ -16,4 +16,6 @@ public interface RecruiterService
 	public List<Job> ViewAllJobs();
 	
 	public Job ViewJobByID(int jobid);
+	
+	public Job viewJobByTitleAndDescription(String title,String description);
 }
