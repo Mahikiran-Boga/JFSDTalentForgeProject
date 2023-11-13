@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -137,31 +138,20 @@
 
       <!-- Sample job cards -->
      <br><br><br><br>
-         
+    <c:forEach items="${jobslist}" var="job">
+    
     <div class="job-card">
-      <img src="/images/ibm.png" alt="Company Logo" height="1000px" width="100px">
-      <h3>Java Full Stack Developer</h3>
-      <p>Location: Hyderabad, India</p>
-      <p>Skills: SpringBoot, ORM, Databases</p>
-      <p>Description: design back-end architecture using multiple technologies. build front-end technologies to create user interfaces. .</p>
-      <p>Salary: Upto 1000000-1200000/year</p>
+      <img src='displaycompanyimage?id=${job.id}' alt="Company Logo" height="130px" width="100px">
+      <h3><c:out value="${job.jobtitle}"></c:out></h3>
+      <p>Location: <c:out value="${job.location}"></c:out></p>
+      <p>Skills: <c:out value="${job.skills}"></c:out></p>
+      <p>Description: <c:out value="${job.description}"></c:out></p>
+      <p>Salary: <c:out value="${job.salary}"></c:out></p>
       <button class="apply-btn">Apply</button>
     </div>
 
-    <div class="job-card">
-      <img src="/images/amazon.png" alt="Company Logo" height="1000px" width="100px">
-      <h3>Software Engineer SDE</h3>
-      <p>Location: Banglore, India</p>
-      <p>Skills: REST, Mern Stack</p>
-      <p>Description: Need to satisfy the Client Requirements in the field of Ecommerce with robust application Development.</p>
-      <p>Salary: Upto 2000000-4400000/year</p>
-      <button class="apply-btn">Apply</button>
-    </div>
-
-      <!-- Button to load more job cards -->
-      <button id="load-more-btn">Load More</button>
-    </div>
- 
+   </c:forEach>
+ </div>
    <br>
     <div id="right-half">
     <br><br><br><br>
@@ -180,7 +170,7 @@
 
       <nav>
         <a href="applicanthome">Home</a>
-        <a href="#">Jobs</a>
+        <a href="#">My Applications</a>
         <a href="#">About</a>
           <a href="#">Settings</a>
             <a href="/">Logout</a>

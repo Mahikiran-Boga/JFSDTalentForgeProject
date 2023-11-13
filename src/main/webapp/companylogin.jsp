@@ -1612,7 +1612,7 @@
   </span>
                 <p style="color: darkblue; font-size: 24px;"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆 𝑹𝒆𝒄𝒓𝒖𝒊𝒕𝒆𝒓 𝑳𝒐𝒈𝒊𝒏<img src="/images/search.png" width="30px" height="30" /></p>
 
-        <form action="" method="post">
+        <form action="checkrecruiterlogin" method="post">
             <div class="mb-3">
                 <label for="email">Email:</label>
                 <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">

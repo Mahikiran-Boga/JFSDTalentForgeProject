@@ -1644,7 +1644,7 @@ margin-top:300px;
        <p style="color: darkblue; font-size: 24px;"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆 𝑹𝒆𝒄𝒓𝒖𝒊𝒕𝒆𝒓 𝑹𝒆𝒈𝒊𝒔𝒕𝒓𝒂𝒕𝒊𝒐𝒏<img src="/images/search.png" width="30px" height="30" /></p>
 
        
-        <form action="registration" method="post" id="passwordForm">
+        <form action="recruiterRegistration" method="post" id="passwordForm">
             <div class="mb-3">
                 <label for="email">Email:</label>
                 <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>

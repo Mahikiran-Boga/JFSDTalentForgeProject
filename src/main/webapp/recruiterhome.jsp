@@ -17,8 +17,8 @@
     <input type="radio" name="slider" id="close-btn">
     <ul class="nav-links">
       <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
+      <li><a href="recruiterhome">Home</a></li>
+      <li><a href="postajob">Post a Job</a></li>
       <li>
         <a href="#" class="desktop-item">Dropdown Menu</a>
         <input type="checkbox" id="showDrop">

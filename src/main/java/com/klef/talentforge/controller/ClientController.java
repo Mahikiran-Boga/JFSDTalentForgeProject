@@ -1,26 +1,38 @@
 package com.klef.talentforge.controller;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+
+import javax.sql.rowset.serial.SerialException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.klef.talentforge.model.Admin;
 import com.klef.talentforge.model.Applicant;
+import com.klef.talentforge.model.Job;
+import com.klef.talentforge.model.Recruiter;
 import com.klef.talentforge.service.AdminService;
-import com.klef.talentforge.service.AdminServiceImpl;
 import com.klef.talentforge.service.ApplicantService;
 import com.klef.talentforge.service.EmailManager;
+import com.klef.talentforge.service.RecruiterService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.http.MediaType;
 
 @Controller
 public class ClientController 
@@ -35,12 +47,27 @@ public class ClientController
 	@Autowired
 	private AdminService adminService;
 	
+	@Autowired
+	private RecruiterService recruiterService;
+	
+	
+	
 	@GetMapping("applicanthome")
 	public ModelAndView indexpage() {
 		ModelAndView mv=new ModelAndView("index");
+		List<Job> jobslist = recruiterService.ViewAllJobs();
+  	   mv.addObject("jobslist", jobslist);
 		return mv;
 	}
+	@GetMapping("displaycompanyimage")
+	public ResponseEntity<byte[]> displayprofileimage(@RequestParam("id") int id) throws IOException, SQLException
+	   {
+	     Job mem =  recruiterService.ViewJobByID(id);
+	     byte [] imageBytes = null;
+	     imageBytes = mem.getImage().getBytes(1,(int) mem.getImage().length());
 
+	     return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(imageBytes);
+	   }
 	
 	@GetMapping("register")
 	public ModelAndView employeeregister() {
@@ -156,6 +183,7 @@ public class ClientController
 	@GetMapping("companyregistration")
 	public ModelAndView companyregistration() {
 		ModelAndView mv=new ModelAndView("companyregistration");
+		
 		return mv;
 	}
 	
@@ -186,5 +214,127 @@ public class ClientController
 		return mv;
 	}
 	
-
+	        @PostMapping("recruiterRegistration")
+			public ModelAndView recruiterRegistration(HttpServletRequest request) {
+				ModelAndView mv = new ModelAndView();
+				String msg = null;
+				try {
+					String companyname = request.getParameter("companyname");
+					String email = request.getParameter("email");
+					String pwd = request.getParameter("password");
+					String contact = request.getParameter("contactnumber");
+					String address = request.getParameter("address");
+					
+					
+					LocalDate currentDate = LocalDate.now();
+					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+					String currentDateStr = currentDate.format(formatter);
+					
+					LocalTime currentTime = LocalTime.now();
+					DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+					String currentTimeStr = currentTime.format(timeFormatter);
+		    
+					
+					Recruiter recruiter = new Recruiter();
+					recruiter.setEmail(email);
+					recruiter.setCompanyname(companyname);
+					recruiter.setPassword(pwd);
+					recruiter.setContactno(contact);
+					recruiter.setAddress(address);
+					
+				    msg = recruiterService.registerRecruiter(recruiter);
+				    
+				    
+					 String fileName = "invite.html"; 
+			            String filePath = request.getServletContext().getRealPath("/" + fileName);
+			            
+				    String fromEmail = "mahikiran.b@gmail.com"; // Set your email
+		            String toEmail = email; // Use the user's email from the booking
+		            String subject = "Talentforge  Registration Confirmation";
+		            String text = "Hello " +companyname +"\n"+" Your Registration into talentforge  has been Sucessfull "+"\n"+" Through this email "+email;
+		            String text2="Date :-" +currentDateStr +"\n"+"On this Time :-"+currentTimeStr;
+		            // Inject JavaMailSender
+		            String htmlContent = new String(Files.readAllBytes(Paths.get(filePath)));
+		            htmlContent = htmlContent.replace("[name]", companyname);
+		            htmlContent = htmlContent.replace("[text]", text);
+		            htmlContent=htmlContent.replace("[text2]", text2);
+		            
+		            htmlContent=htmlContent.replace("[password]", pwd);
+		            
+		        
+		            emailManager.sendEmail(fromEmail, toEmail, subject, text,htmlContent);
+		            mv.setViewName("companylogin");
+					mv.addObject("message", msg);
+					
+				}
+				catch (Exception e) {
+					mv.setViewName("companyregistration");
+					msg = "Registration Failed & Provide Valid Details..!!";
+					mv.addObject("message", msg);
+				}
+				return mv;
+			}
+		  
+		  
+		     @PostMapping("checkrecruiterlogin")
+		 	public ModelAndView checkrecruiterlogin(HttpServletRequest request) {
+		 		String uname = request.getParameter("email");
+		 		String pwd = request.getParameter("password1");
+		 		HttpSession session = request.getSession();
+		 		Recruiter rec = recruiterService.checkRecruiterlogin(uname, pwd);
+		 	
+		 		ModelAndView mv =new ModelAndView();
+		 		if(rec!=null ) {
+		 		
+		 			session.setAttribute("rid",rec.getId()); 
+		 			session.setAttribute("remail",rec.getEmail());
+		 			session.setAttribute("rcompanynmae",rec.getCompanyname());
+		 			mv.setViewName("recruiterhome");
+		 		}else  {
+		 			mv.setViewName("companyregistration");
+		 			mv.addObject("message", "Invalid Login..!");
+		 					}
+		 		return mv;
+		 	}
+	
+         @GetMapping("postajob")
+         public ModelAndView postajob() {
+     		ModelAndView mv=new ModelAndView("addjob");
+     		
+     		return mv;
+     	}
+         
+        @PostMapping("addjob")
+        public ModelAndView addajob(HttpServletRequest request,@RequestParam("companyimage") MultipartFile file)throws IOException, SerialException, SQLException
+        {
+        	ModelAndView mv=new ModelAndView();
+        	String title=request.getParameter("jobtitle");
+        	String location=request.getParameter("location");
+        	String skills=request.getParameter("skills");
+        	String description=request.getParameter("description");
+        	String salary=request.getParameter("salary");
+        	byte[] bytes = file.getBytes();
+			Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
+			
+			Job job=new Job();
+			job.setJobtitle(title);
+			job.setLocation(location);
+			job.setSkills(skills);
+			job.setSalary(salary);
+			job.setDescription(description);
+			job.setImage(blob);
+			
+			String msg=recruiterService.addjob(job);
+			mv.setViewName("addjob");
+			mv.addObject("msg", msg);
+			return mv;
+        	
+        }
+         
+        
+        
+      
+        
+  
+		     
 }
