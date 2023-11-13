@@ -18,11 +18,11 @@ public class Job
 	private int id;
 	@Column(name = "job_title",length = 50,nullable = false)
 	private String jobtitle;
-	@Column(name = "job_location",length = 100,nullable = false)
+	@Column(name = "job_location",length = 300,nullable = false)
 	private String location;
-	@Column(name = "job_skills",length = 100,nullable = false)
+	@Column(name = "job_skills",length = 500,nullable = false)
 	private String skills;
-	@Column(name = "job_description",length = 100,nullable = false)
+	@Column(name = "job_description",length = 500,nullable = false)
 	private String description;
 	@Column(name = "job_salary",length = 40,nullable = false)
 	private String salary;

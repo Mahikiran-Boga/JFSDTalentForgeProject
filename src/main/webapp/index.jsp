@@ -79,7 +79,7 @@
       background-color: #fff;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      padding: 10px;
+      padding: 8px;
       display: flex;
       flex-direction: column;
       gap: 2px;	
@@ -88,7 +88,7 @@
     .job-card img {
       max-width: 200px;
       max-height: 100px;
-      border-radius: 50%;
+      border-radius: 0%;
     }
 
     .apply-btn {
@@ -141,7 +141,7 @@
     <c:forEach items="${jobslist}" var="job">
     
     <div class="job-card">
-      <img src='displaycompanyimage?id=${job.id}' alt="Company Logo" height="130px" width="100px">
+      <img src='displaycompanyimage?id=${job.id}' alt="Company Logo" height="45px" width="80px">
       <h3><c:out value="${job.jobtitle}"></c:out></h3>
       <p>Location: <c:out value="${job.location}"></c:out></p>
       <p>Skills: <c:out value="${job.skills}"></c:out></p>
