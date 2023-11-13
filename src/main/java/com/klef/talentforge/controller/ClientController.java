@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.klef.talentforge.model.Admin;
 import com.klef.talentforge.model.Applicant;
+import com.klef.talentforge.service.AdminService;
+import com.klef.talentforge.service.AdminServiceImpl;
 import com.klef.talentforge.service.ApplicantService;
 import com.klef.talentforge.service.EmailManager;
 
@@ -28,6 +31,9 @@ public class ClientController
 
 	@Autowired
 	private EmailManager emailManager;
+	
+	@Autowired
+	private AdminService adminService;
 	
 	@GetMapping("applicanthome")
 	public ModelAndView indexpage() {
@@ -136,5 +142,49 @@ public class ClientController
 					}
 		return mv;
 	}
+	
+	@GetMapping("recruiterhome")
+	public ModelAndView recruiterhome() {
+		ModelAndView mv=new ModelAndView("recruiterhome");
+		return mv;
+	}
+	@GetMapping("companylogin")
+	public ModelAndView companylogin() {
+		ModelAndView mv=new ModelAndView("companylogin");
+		return mv;
+	}
+	@GetMapping("companyregistration")
+	public ModelAndView companyregistration() {
+		ModelAndView mv=new ModelAndView("companyregistration");
+		return mv;
+	}
+	
+	@PostMapping("checkadminlogin")
+	public ModelAndView checkadminlogin(HttpServletRequest request) {
+		String username=request.getParameter("email");
+		String password=request.getParameter("password1");
+		ModelAndView mv=new ModelAndView();
+		HttpSession session=request.getSession();
+		Admin adm=adminService.checkadminlogin(username, password);
+		if(adm!=null) {
+			 
+			session.setAttribute("uname", adm.getUsername());
+			mv.setViewName("adminhome");
+			
+		}
+	    else  {
+		mv.setViewName("adminlogin");
+		mv.addObject("message", "Invalid Login..!");
+				}
+	return mv;
+		
+	}
+	
+	@GetMapping("admin")
+	public ModelAndView adminlogin() {
+		ModelAndView mv=new ModelAndView("adminlogin");
+		return mv;
+	}
+	
 
 }

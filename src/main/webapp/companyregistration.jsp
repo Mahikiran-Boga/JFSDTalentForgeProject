@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Applicant Registration</title>
+    <title>Company Registration</title>
     <link rel="stylesheet" href="style.css">
     <style>
         /* General styling */
@@ -1641,7 +1641,7 @@ margin-top:300px;
         <div class="card">
             <div class="card-body">
                 <h5 align="center" style="color:red">${message}</h5>
-       <p style="color: darkblue; font-size: 24px;"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆 𝑹𝒆𝒈𝒊𝒔𝒕𝒓𝒂𝒕𝒊𝒐𝒏<img src="/images/search.png" width="30px" height="30" /></p>
+       <p style="color: darkblue; font-size: 24px;"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆 𝑹𝒆𝒄𝒓𝒖𝒊𝒕𝒆𝒓 𝑹𝒆𝒈𝒊𝒔𝒕𝒓𝒂𝒕𝒊𝒐𝒏<img src="/images/search.png" width="30px" height="30" /></p>
 
        
         <form action="registration" method="post" id="passwordForm">
@@ -1649,23 +1649,10 @@ margin-top:300px;
                 <label for="email">Email:</label>
                 <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
             </div>
-           
+        
             <div class="mb-3">
-                <label for="first_name">First Name:</label>
-                <input type="text" class="form-control" id="first_name" name="firstname"
-                    placeholder="Enter first name" required>
-            </div>
-            <div class="mb-3">
-                <label for="last_name">Last Name:</label>
-                <input type="text" class="form-control" id="last_name" name="lastname" placeholder="Enter last name" required>
-            </div>
-            <div class="mb-3">
-                <label for="gender">Gender:</label>
-                <select class="form-control" id="gender" name="gender" required>
-                    <option value="">Select</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                </select>
+                <label for="last_name">Company Name:</label>
+                <input type="text" class="form-control" id="last_name" name="companyname" placeholder="Enter company name" required>
             </div>
             <div class="mb-3">
                 <label for="phone_number">Phone Number:</label>
@@ -1690,7 +1677,7 @@ margin-top:300px;
             
         </div>
       
-            <a href="/">Login Here</a>
+            <a href="/companylogin">Login Here</a>
                <br>
               <br>
        

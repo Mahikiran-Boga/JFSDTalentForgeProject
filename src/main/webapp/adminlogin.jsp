@@ -1,17 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>Applicant Registration</title>
+    <title> Applicant Login</title>
     <link rel="stylesheet" href="style.css">
     <style>
         /* General styling */
 
-       
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
 
         .container {
             width: 500px;
@@ -66,7 +70,9 @@
             height: 100%
         }
 
-        
+        body {
+            height: 100%
+        }
 
         header {
             z-index: 1000
@@ -260,12 +266,12 @@
         }
 
         #accordion .card {
-            border-color: transparent;
+            border-color: #ff7473;
             margin-bottom: 10px
         }
 
         #accordion .card .card-header {
-            background: transparent;
+            background: #ff7473;
             padding: 0
         }
 
@@ -1056,9 +1062,8 @@
             font-size: .875rem;
             font-weight: 400;
             line-height: 1.5;
-            
             color: #555;
-            background-color: #F9F9FB;
+            background-color: #fff
         }
 
         a {
@@ -1547,7 +1552,7 @@
             padding: .375rem .75rem;
             font-size: 1rem;
             line-height: 1.5;
-            color: #000000;
+            color: #868e96;
             background-color: #fff;
             border: 1px solid #ced4da;
             border-radius: 0;
@@ -1577,167 +1582,58 @@
         .form-control::-ms-input-placeholder {
             color: #868e96
         }
+    .card {
+        width: 100%; /* Adjust as needed */
+        margin: 50px auto; /* Centers the card */
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Adds a shadow */
+        border-radius: 15px; /* Gives rounded corners */
+        padding: 20px;
+        color: black;
 
-       .error {
-            color: red;
-        }
-               
-    
+    }
 
     .card-title {
         text-align: center;
         color: #333;
     }
-     #registerimage {
-        width: 300px; /* Adjust the width as needed */
-      margin-left: -310px;
-     
-    }
-   .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     
-}
-
-.registration-section {
-    display: flex;
-    align-items: center;
-}
-
-#registerimage {
-    width: 650px; /* Adjust the width as needed */
-    margin-right: -280px; /* Creates space between image and form */
-    
-    
-}
-
-.card {
-margin-top:300px;
-    width: 100%;
-    border-radius: 15px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow to the card */
-    padding: 30px;
-    margin-left: 360px;
-}
-
-.card-body {
-    /* Your card body styles */
-}
-
-.card-title {
-    text-align: center;
-    color: #333;
-}
+       
+       
     </style>
 </head>
 
 <body>
     <div class="container">
-    <div class="registration-section">
-        <img id="registerimage" alt="" src="images/register1.png">
-        <div class="card">
-            <div class="card-body">
-                <h5 align="center" style="color:red">${message}</h5>
-       <p style="color: darkblue; font-size: 24px;"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆 𝑹𝒆𝒈𝒊𝒔𝒕𝒓𝒂𝒕𝒊𝒐𝒏<img src="/images/search.png" width="30px" height="30" /></p>
+    
+    	<div class="card">
+    <div class="card-body">
+     <span class="blink">
+  <h5 align="center" style="color:red">${message}</h5>
+  </span>
+                <p style="color: darkblue; font-size: 24px;"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆 𝑨𝒅𝒎𝒊𝒏 𝑳𝒐𝒈𝒊𝒏<img src="/images/search.png" width="30px" height="30" /></p>
 
-       
-        <form action="registration" method="post" id="passwordForm">
+        <form action="checkadminlogin" method="post">
             <div class="mb-3">
                 <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+                <input type="text" class="form-control" id="email" name="email" placeholder="Enter email">
             </div>
            
             <div class="mb-3">
-                <label for="first_name">First Name:</label>
-                <input type="text" class="form-control" id="first_name" name="firstname"
-                    placeholder="Enter first name" required>
+                <label for="password1">Password:</label>
+                <input type="password" class="form-control" id="password1" name="password1"
+                    placeholder="Enter password">
+                    <br><br>
+                     <a href="companyregistration">Don't have an account?</a>
             </div>
-            <div class="mb-3">
-                <label for="last_name">Last Name:</label>
-                <input type="text" class="form-control" id="last_name" name="lastname" placeholder="Enter last name" required>
-            </div>
-            <div class="mb-3">
-                <label for="gender">Gender:</label>
-                <select class="form-control" id="gender" name="gender" required>
-                    <option value="">Select</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="phone_number">Phone Number:</label>
-                <input type="tel" class="form-control" id="phone_number" name="contactnumber"
-                    placeholder="Enter phone number" required>
-            </div>
-            <div class="mb-3">
-                <label for="address">Address:</label>
-                <textarea class="form-control" id="address" name="address" rows="3"
-                    placeholder="Enter address" required></textarea>
-            </div>
-            <div class="mb-3">
-            <label for="password1">Password:</label>
-            <input type="password" class="form-control" id="password1" name="password"
-                placeholder="Enter password" required>
-        </div>
-        <div class="mb-3">
-            <label for="password2">Confirm Password:</label>
-            <input type="password" class="form-control" id="password2" name="password2"
-                placeholder="Confirm password" required>
-            <span class="error" id="passwordError"></span>
+           
+            <button type="submit" class="btn btn-primary" style="position: relative;">Login</button>
             
-        </div>
-      
-            <a href="/">Login Here</a>
-               <br>
-              <br>
-       
-        
-            <button type="submit" class="btn btn-primary">Register</button>
+           
         </form>
-        
     </div>
     </div>
     </div>
-    </div>
-<br>
-        <br>
-        <br>
-     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const password1 = document.getElementById('password1');
-            const password2 = document.getElementById('password2');
-            const passwordError = document.getElementById('passwordError');
-            const passwordForm = document.getElementById('passwordForm');
-
-            function validatePassword() {
-                if (password1.value !== password2.value) {
-                    passwordError.textContent = "Passwords do not match";
-                    password2.setCustomValidity("Passwords do not match");
-                } else {
-                    passwordError.textContent = "";
-                    password2.setCustomValidity('');
-                }
-            }
-
-            function handleFormSubmit(event) {
-                if (password1.value !== password2.value) {
-                    passwordError.textContent = "Passwords do not match";
-                    password2.setCustomValidity("Passwords do not match");
-                    event.preventDefault();
-                } else {
-                    passwordError.textContent = "";
-                    password2.setCustomValidity('');
-                }
-            }
-
-            password1.addEventListener('input', validatePassword);
-            password2.addEventListener('input', validatePassword);
-            passwordForm.addEventListener('submit', handleFormSubmit);
-        });
-    </script>
+    
 </body>
 
 </html>
