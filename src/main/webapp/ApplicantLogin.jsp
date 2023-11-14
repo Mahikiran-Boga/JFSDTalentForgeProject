@@ -5,6 +5,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title> Applicant Login</title>
     <link rel="stylesheet" href="style.css">
     <style>
@@ -1603,8 +1605,10 @@
 </head>
 
 <body>
-    <div class="container">
+ 
     
+    <div class="container">
+    																																		
     	<div class="card">
     <div class="card-body">
      <span class="blink">
@@ -1630,9 +1634,12 @@
             
            
         </form>
+       
     </div>
     </div>
+    
     </div>
+  
     
 </body>
 

@@ -18,4 +18,9 @@ public interface RecruiterService
 	public Job ViewJobByID(int jobid);
 	
 	public Job viewJobByTitleAndDescription(String title,String description);
+	
+	public List<Job> viewjobsbycompanyname(String companyname);
+	  
+	public String deletejob(int id);
+
 }

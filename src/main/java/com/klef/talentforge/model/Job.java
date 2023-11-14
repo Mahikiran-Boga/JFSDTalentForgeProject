@@ -28,7 +28,18 @@ public class Job
 	private String salary;
 	@Column(name="comapany_image")
 	  private Blob image;
+	
+	@Column(name="company_name")
+	private String companyname;
+	
+	
 	  
+	public String getCompanyname() {
+		return companyname;
+	}
+	public void setCompanyname(String companyname) {
+		this.companyname = companyname;
+	}
 	public int getId() {
 		return id;
 	}

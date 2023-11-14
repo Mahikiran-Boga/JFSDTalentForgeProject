@@ -313,6 +313,7 @@ public class ClientController
         	String skills=request.getParameter("skills");
         	String description=request.getParameter("description");
         	String salary=request.getParameter("salary");
+        	String companyname = request.getParameter("companyname");
         	byte[] bytes = file.getBytes();
 			Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
 			Job j=recruiterService.viewJobByTitleAndDescription(title, description);
@@ -325,6 +326,7 @@ public class ClientController
 			job.setSalary(salary);
 			job.setDescription(description);
 			job.setImage(blob);
+			job.setCompanyname(companyname);
 			
 			String msg=recruiterService.addjob(job);
 			mv.setViewName("addjob");
@@ -337,7 +339,26 @@ public class ClientController
         	
         }
          
-        
+        @GetMapping("recruiterviewjobs")
+        public ModelAndView recruiterviewjobs(HttpServletRequest request) {
+          ModelAndView mv=new ModelAndView("recruiterviewalljobs");
+          HttpSession session = request.getSession();
+          int sid = (int) session.getAttribute("rid"); 
+         String sname = (String) session.getAttribute("rcompanynmae");
+          List<Job> jobsbyname = recruiterService.viewjobsbycompanyname(sname);
+          mv.addObject("jobsbyname", jobsbyname);
+         
+          return mv;
+        }
+
+        @GetMapping("deletejob")
+        public String deletejob(@RequestParam("id") int id) {
+            ModelAndView mv=new ModelAndView("adminviewalljobs");
+           String msg = recruiterService.deletejob(id);
+           mv.addObject("msg", msg);
+            return "redirect:/recruiterviewjobs";
+          }
+
         
       
         

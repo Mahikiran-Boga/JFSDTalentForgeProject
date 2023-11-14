@@ -64,5 +64,23 @@ public class RecruiterServiceImpl implements RecruiterService{
 		return jobRepository.viewJobByTitleAndDescription(title, description);
 	}
 	
+	
+	@Override
+	  public List<Job> viewjobsbycompanyname(String companyname) {
+	    return jobRepository.viewalljobsbycompanyname(companyname);
+	  }
+
+	  @Override
+	  public String deletejob(int id) {
+	    Optional<Job> obj = jobRepository.findById(id);
+	    String msg="";
+	    if(obj.isPresent()) {
+	      Job job = obj.get();
+	      jobRepository.delete(job);
+	       msg = "Successfully Deleted";
+	    }
+	    return msg;
+	  }
+
 
 }
