@@ -11,7 +11,7 @@
 <body>
 <nav>
   <div class="wrapper">
-    <div class="logo"><p style="color: white; font-size: 24px;"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆 <img src="/images/search.png" width="30px" height="30" /></p>
+    <div class="logo"><p style="color: white; font-size: 24px;"> <a href="recruiterhome"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆</a> <img src="/images/search.png" width="30px" height="30" /></p>
 </div>
     <input type="radio" name="slider" id="menu-btn">
     <input type="radio" name="slider" id="close-btn">
@@ -24,7 +24,7 @@
         <input type="checkbox" id="showDrop">
         <label for="showDrop" class="mobile-item">Dropdown Menu</label>
         <ul class="drop-menu">
-          <li><a href="#">Drop menu 1</a></li>
+          <li><a href="recruiterviewjobs">view jobs</a></li>
           <li><a href="#">Drop menu 2</a></li>
           <li><a href="#">Drop menu 3</a></li>
           <li><a href="#">Drop menu 4</a></li>
@@ -76,7 +76,7 @@
 </nav>
 
 <div class="body-text">
-  <div class="title">Responsive Dropdown and Mega Menu</div>
+  <div class="title">Welcome <h1><img src='displaycompanyimage?id=${rid}' alt="Company Logo" height="90px" width="180px"></h1></div>
   <div class="sub-title">using only HTML & CSS</div>
 </div>
 <!-- partial -->

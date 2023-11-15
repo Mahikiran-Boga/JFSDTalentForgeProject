@@ -82,5 +82,6 @@ public class RecruiterServiceImpl implements RecruiterService{
 	    return msg;
 	  }
 
+	
 
 }

@@ -22,5 +22,6 @@ public interface RecruiterService
 	public List<Job> viewjobsbycompanyname(String companyname);
 	  
 	public String deletejob(int id);
+	
 
 }

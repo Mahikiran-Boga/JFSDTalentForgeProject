@@ -69,6 +69,8 @@ public class ClientController
 	     return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(imageBytes);
 	   }
 	
+
+	
 	@GetMapping("register")
 	public ModelAndView employeeregister() {
 		ModelAndView mv=new ModelAndView("ApplicantRegister");

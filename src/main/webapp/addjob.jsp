@@ -93,7 +93,7 @@ a:hover {
 <body>
 <nav>
   <div class="wrapper">
-    <div class="logo"><p style="color: white; font-size: 24px;"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆 <img src="/images/search.png" width="30px" height="30" /></p>
+    <div class="logo"><p style="color: white; font-size: 24px;"> <a href="recruiterhome"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆</a> <img src="/images/search.png" width="30px" height="30" /></p>
 </div>
     <input type="radio" name="slider" id="menu-btn">
     <input type="radio" name="slider" id="close-btn">
@@ -106,7 +106,7 @@ a:hover {
         <input type="checkbox" id="showDrop">
         <label for="showDrop" class="mobile-item">Dropdown Menu</label>
         <ul class="drop-menu">
-          <li><a href="#">Drop menu 1</a></li>
+          <li><a href="recruiterviewjobs">view jobs</a></li>
           <li><a href="#">Drop menu 2</a></li>
           <li><a href="#">Drop menu 3</a></li>
           <li><a href="#">Drop menu 4</a></li>
@@ -193,6 +193,11 @@ a:hover {
             <label for="password1">Salary:</label>
             <input type="number" class="form-control"  name="salary"
                 placeholder="Enter Salary" required>
+        </div>
+          <div class="mb-3">
+            <label for="password1">Company name:</label>
+            <input type="text" class="form-control" value="${rcompanynmae}" name="companyname" readonly
+                required>
         </div>
          <div class="mb-3">
             <label for="password1">Company Logo:</label>

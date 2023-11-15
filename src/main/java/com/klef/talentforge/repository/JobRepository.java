@@ -16,6 +16,9 @@ public interface JobRepository extends JpaRepository<Job, Integer>{
 	
 	@Query("from Job where companyname=?1 ")
 	public List<Job> viewalljobsbycompanyname(String companyname);
+	
+	
+	
 
 
 
