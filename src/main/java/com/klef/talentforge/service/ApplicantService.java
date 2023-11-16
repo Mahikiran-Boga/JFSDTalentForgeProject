@@ -7,4 +7,6 @@ public interface ApplicantService {
 	public String register(Applicant applicant);
 	
 	public Applicant checkApplicantlogin(String uname,String pwd);
+	
+	public Applicant getApplicantById(int id);
 }

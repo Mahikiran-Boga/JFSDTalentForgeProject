@@ -1,5 +1,7 @@
 package com.klef.talentforge.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,16 @@ public class ApplicantServiceImpl implements ApplicantService {
 	@Override
 	public Applicant checkApplicantlogin(String uname, String pwd) {
 		return applicantRepository.checkApplicantlogin(uname, pwd);
+	}
+
+	
+	public Applicant getApplicantById(int id) {
+		Optional<Applicant> obj=applicantRepository.findById(id);
+		if(obj.isPresent()) {
+			Applicant app=obj.get();
+			 return app;
+		}
+		return null;
 	}
 	
 	

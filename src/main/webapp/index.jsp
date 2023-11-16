@@ -91,14 +91,22 @@
       border-radius: 0%;
     }
 
-    .apply-btn {
-      background-color: darkblue;
-      color: #fff;
-      padding: 8px 12px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
+   .apply-btn {
+  display: inline-block;
+  background-color: darkblue;
+  color: #fff;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+    text-align: center; /* Center the text */
+  
+  text-decoration: none; /* Remove underline */
+  cursor: pointer;
+}
+
+.apply-btn:hover {
+  background-color: navy; /* Change color on hover if desired */
+}
 
     #right-half {
       flex: 0 0 20%;
@@ -147,7 +155,11 @@
       <p>Skills: <c:out value="${job.skills}"></c:out></p>
       <p>Description: <c:out value="${job.description}"></c:out></p>
       <p>Salary: <c:out value="${job.salary}"></c:out></p>
-      <button class="apply-btn">Apply</button>
+      
+      <a href="applyjob?id=${job.id}" class="apply-btn">Apply</a>
+
+
+      
     </div>
 
    </c:forEach>

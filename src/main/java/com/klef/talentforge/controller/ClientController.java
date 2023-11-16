@@ -1,6 +1,7 @@
 package com.klef.talentforge.controller;
 
 import java.io.IOException;
+import java.net.http.HttpRequest;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.Blob;
@@ -59,6 +60,22 @@ public class ClientController
   	   mv.addObject("jobslist", jobslist);
 		return mv;
 	}
+	
+	@GetMapping("applyjob")
+	public ModelAndView applyjob(HttpServletRequest request,@RequestParam("id") int  id) {
+		ModelAndView mv=new ModelAndView("applyjob");
+		HttpSession session = request.getSession();
+        int sid = (int) session.getAttribute("cid"); 
+        Applicant app=applicantService.getApplicantById(sid);
+        
+        Job job=recruiterService.ViewJobByID(id);
+        
+        mv.addObject("applicant", app);
+        mv.addObject("job", job);
+        
+		return mv;
+	}
+	
 	@GetMapping("displaycompanyimage")
 	public ResponseEntity<byte[]> displayprofileimage(@RequestParam("id") int id) throws IOException, SQLException
 	   {
@@ -164,6 +181,8 @@ public class ClientController
 			session.setAttribute("fname", c.getFirstname());
 			session.setAttribute("lname",c.getLastname());
 			session.setAttribute("email",c.getEmail());
+			List<Job> jobslist = recruiterService.ViewAllJobs();
+		  	mv.addObject("jobslist", jobslist);
 			mv.setViewName("index");
 		}else  {
 			mv.setViewName("ApplicantLogin");
