@@ -21,13 +21,13 @@ public class JobApplications {
     private String firstname;
     @Column(name="applicantion_lname",nullable=false,length = 50)
     private String lastname;
-    @Column(name="applicantion_email",nullable=false,unique = true,length = 30)
+    @Column(name="applicantion_email",nullable=false,length = 30)
     private String email;
     @Column(name="application_dateofbirth",nullable=false,length = 10)
     private String dateofbirth;
     @Column(name="applicantion_experience",nullable=false,length = 30)
     private String experience;
-    @Column(name="applicantion_contactno",nullable=false,unique = true)
+    @Column(name="applicantion_contactno",nullable=false,length = 10)
     private String contactno;
     @Column(name="applicantion_companyname",nullable=false,length = 1000)
     private String companyname;

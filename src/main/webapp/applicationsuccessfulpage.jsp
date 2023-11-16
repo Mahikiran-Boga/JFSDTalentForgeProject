@@ -228,69 +228,17 @@ a:hover {
       <!-- Sample job cards -->
      <br><br><br><br>
   <div class="card-body">
-                <h5 align="center" style="color:red">${msg}</h5>
-                <img src="displaycompanyimage?id=${job.id}" width="80px" height="50" />
        <p style="color: darkblue; font-size: 24px;"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆 𝑨𝒑𝒑𝒍𝒚 𝑱𝒐𝒃</p>
        
           <h3><font color="green">${msg}</font></h3><br>
        
-     
-
-       
-        <form action="apply" method="post" id="passwordForm" enctype="multipart/form-data" onsubmit="return validateFile()">
-            <div class="mb-3">
-                <label for="email">Job Title:</label>
-                <input type="text" class="form-control"id="jobtitle"  name="jobtitle" value="${job.jobtitle}" readonly required>
-            </div>
+        <form action="applicanthome" method="get" id="passwordForm" >
         
-            <div class="mb-3">
-                <label for="last_name">First Name:</label>
-                <input type="text" class="form-control" name="fname" is="fname" value='${applicant.firstname}'  required>
-            </div>
-            <div class="mb-3">
-                <label for="phone_number">Last Name:</label>
-                <input type="text" class="form-control" id="lname" name="lname"
-                    value='${applicant.lastname}'  required>
-            </div>
-             <div class="mb-3">
-                <label for="phone_number">Email:</label>
-                <input type="email" class="form-control" id="email" name="email"
-                  value='${applicant.email}' readonly  required>
-            </div>
-            <div class="mb-3">
-                <label for="phone_number">Date of Birth:</label>
-                <input type="date" class="form-control" id="dateofbirth" name="dateofbirth"
-                    required>
-            </div>
-            <div class="mb-3">
-              <label for="experience">Experience:</label>
-             <select class="form-control" id="experience" name="experience" required>
-                <option value="" disabled selected>Select Experience</option>
-                <option value="0-1">0-1 years</option>
-                <option value="1-3">1-3 years</option>
-                <option value="3-5">3-5 years</option>
-        <!-- Add more options as needed -->
-             </select>
-</div>
-     <div class="mb-3">
-                <label for="phone_number">Phone Number:</label>
-                <input type="tel" class="form-control" id="contactnumber" name="contactnumber"
-                     value='${applicant.contactno}' readonly required>
-            </div>
-          
+         <button type="submit" class="btn btn-primary">Search For More Jobs..</button>
+           
+             
         
-          <div class="mb-3">
-            <label for="password1">Company name:</label>
-            <input type="text" class="form-control" value="${job.companyname}"id="companyname " name="companyname" readonly
-                required>
-        </div>
-         <div class="mb-3">
-            <label for="password1">Upload Resume:</label>
-            <input type="file" class="form-control"  name="resume" id="resume"
-                required>
-        </div>
-      
-            <button type="submit" class="btn btn-primary">Apply Job</button>
+           
         </form>
 
  </div> </div>

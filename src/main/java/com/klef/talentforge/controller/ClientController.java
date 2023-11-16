@@ -61,6 +61,13 @@ public class ClientController
 		return mv;
 	}
 	
+	@GetMapping("applicationsuccessfulpage")
+	public ModelAndView applicationsuccessfulpage()
+	{
+		ModelAndView mv=new ModelAndView("applicationsuccessfulpage");
+		return mv;
+	}
+	
 	@GetMapping("applyjob")
 	public ModelAndView applyjob(HttpServletRequest request,@RequestParam("id") int  id) {
 		ModelAndView mv=new ModelAndView("applyjob");
@@ -381,7 +388,17 @@ public class ClientController
           }
 
         
-      
+       @PostMapping("/apply")
+       public ModelAndView applyjob(@RequestParam("jobtitle") String jobtitle,@RequestParam("fname") String firstname,@RequestParam("lname") String lastname, @RequestParam("email") String email, @RequestParam("dateofbirth") String dateofbirth
+   			
+   			,@RequestParam("experience") String experience,@RequestParam("contactnumber") String contactno,@RequestParam("companyname") String companyname,@RequestParam("resume") MultipartFile request) 
+       {
+    	   ModelAndView mv=new ModelAndView();
+    	   mv.setViewName("applicationsuccessfulpage");
+       	   String response=applicantService.applyJob(jobtitle, firstname, lastname, email, dateofbirth, experience, contactno, companyname, request);
+    	   mv.addObject("msg", response);		   
+    	   return mv;
+       }
         
   
 		     
