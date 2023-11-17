@@ -1,7 +1,6 @@
 package com.klef.talentforge.controller;
 
 import java.io.IOException;
-import java.net.http.HttpRequest;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.Blob;
@@ -24,7 +23,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.klef.talentforge.model.Admin;
 import com.klef.talentforge.model.Applicant;
+import com.klef.talentforge.model.ApplicantImage;
 import com.klef.talentforge.model.Job;
+import com.klef.talentforge.model.JobApplications;
 import com.klef.talentforge.model.Recruiter;
 import com.klef.talentforge.service.AdminService;
 import com.klef.talentforge.service.ApplicantService;
@@ -58,6 +59,7 @@ public class ClientController
 		ModelAndView mv=new ModelAndView("index");
 		List<Job> jobslist = recruiterService.ViewAllJobs();
   	   mv.addObject("jobslist", jobslist);
+  	   
 		return mv;
 	}
 	
@@ -72,15 +74,29 @@ public class ClientController
 	public ModelAndView applyjob(HttpServletRequest request,@RequestParam("id") int  id) {
 		ModelAndView mv=new ModelAndView("applyjob");
 		HttpSession session = request.getSession();
-        int sid = (int) session.getAttribute("cid"); 
-        Applicant app=applicantService.getApplicantById(sid);
+        int sid = (int) session.getAttribute("cid");
         
-        Job job=recruiterService.ViewJobByID(id);
+        Applicant app=applicantService.getApplicantById(sid);
+        Job job =recruiterService.ViewJobByID(id);
+        
+        
+        JobApplications applications =applicantService.checkJobApplication(app.getEmail(), job.getJobtitle(), job.getCompanyname());
+ 	     if(applications==null) 
+ 	   {
+        Job j=recruiterService.ViewJobByID(id);
         
         mv.addObject("applicant", app);
-        mv.addObject("job", job);
+        mv.addObject("jobid", id);
+        mv.addObject("job", j);
         
 		return mv;
+ 	     }
+ 	     else {
+ 	       mv.setViewName("applicationsuccessfulpage");
+   		   mv.addObject("msg", "This Job is Already Applied !!");
+ 	    	 
+ 	     }
+ 	     return mv;
 	}
 	
 	@GetMapping("displaycompanyimage")
@@ -161,7 +177,7 @@ public class ClientController
             
         
             emailManager.sendEmail(fromEmail, toEmail, subject, text,htmlContent);
-            mv.setViewName("/");
+            mv.setViewName("ApplicantLogin");
 			mv.addObject("message", msg);
 			
 		}
@@ -389,17 +405,93 @@ public class ClientController
 
         
        @PostMapping("/apply")
-       public ModelAndView applyjob(@RequestParam("jobtitle") String jobtitle,@RequestParam("fname") String firstname,@RequestParam("lname") String lastname, @RequestParam("email") String email, @RequestParam("dateofbirth") String dateofbirth
+       public ModelAndView applyjob(@RequestParam("jobid") int jobid,  @RequestParam("jobtitle") String jobtitle,@RequestParam("fname") String firstname,@RequestParam("lname") String lastname, @RequestParam("email") String email, @RequestParam("dateofbirth") String dateofbirth
    			
-   			,@RequestParam("experience") String experience,@RequestParam("contactnumber") String contactno,@RequestParam("companyname") String companyname,@RequestParam("resume") MultipartFile request) 
+   			,@RequestParam("experience") String experience,@RequestParam("contactnumber") String contactno,@RequestParam("companyname") String companyname,@RequestParam("resume") MultipartFile file,HttpServletRequest request) 
        {
     	   ModelAndView mv=new ModelAndView();
+    	   
+    	  
+    	   HttpSession session=request.getSession();
+    	   int id=(int) session.getAttribute("cid");
+    	  
+    	   JobApplications applications =applicantService.checkJobApplication(email, jobtitle, companyname);
+    	   if(applications==null)
+    	   {
+    	   
+       	   String response=applicantService.applyJob(jobid,id,jobtitle, firstname, lastname, email, dateofbirth, experience, contactno, companyname, file,true);
+    	   mv.addObject("msg", response);
+    	   
     	   mv.setViewName("applicationsuccessfulpage");
-       	   String response=applicantService.applyJob(jobtitle, firstname, lastname, email, dateofbirth, experience, contactno, companyname, request);
-    	   mv.addObject("msg", response);		   
+    	   
     	   return mv;
        }
+    	   else {
+    		   mv.setViewName("applicationsuccessfulpage");
+    		   mv.addObject("msg", "This Job is Already Applied !!");
+    	   }
+    	   return mv;
+       }
+       
+     
+      @GetMapping("myjobApplications")
+      public ModelAndView viewMyJobApplications(HttpServletRequest request) {
+    	  ModelAndView mv=new ModelAndView();
+    	  HttpSession session=request.getSession();
+    	  int id=(int) session.getAttribute("cid");
+    	  List<JobApplications> jobslist=applicantService.ViewMyJobApplications(id);
+    	  
+    	  mv.setViewName("myjobApplications");
+    	  mv.addObject("jobslist", jobslist);
+    	  return mv;
+      }
+      
+      
+      @PostMapping("uploadapplicantprofileimage")
+      public ModelAndView uploadapplicantprofileimage(HttpServletRequest request,@RequestParam("ApplicantImage") MultipartFile file)throws IOException, SerialException, SQLException
+      {
+        ModelAndView mv=new ModelAndView();
         
-  
+        byte[] bytes = file.getBytes();
+        Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
+        HttpSession session =request.getSession();
+	    int id=(int)session.getAttribute("cid");
+	    ApplicantImage image = new ApplicantImage();
+	    image.setId(id);
+	    image.setImage(blob);
+	    
+	    String msg=applicantService.uploadapplicantprofileimage(image);
+	    List<Job> jobslist = recruiterService.ViewAllJobs();
+	    mv.addObject("jobslist", jobslist);
+	    mv.setViewName("index");
+	    mv.addObject("msg", msg);
+	    return mv;
+        
+      }
+   
+      
+      @GetMapping("displayApplicantimage")
+      public ResponseEntity<byte[]> displayApplicantimage(@RequestParam("id") int id) throws IOException, SQLException
+         {
+           ApplicantImage mem =  applicantService.ViewimageByID(id);
+           byte [] imageBytes = null;
+           imageBytes = mem.getImage().getBytes(1,(int) mem.getImage().length());
+
+           return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(imageBytes);
+         }
+
+      @GetMapping("getApplicationStatus")
+      public ModelAndView getApplicationsStatus(@RequestParam("jobtitle") String jobtitle,
+    		  @RequestParam("companyname") String companyname,HttpServletRequest  request) 
+      {
+    	  ModelAndView mv=new ModelAndView("myapplicationStatus");
+    	  HttpSession session=request.getSession();
+    	  int id=(int)session.getAttribute("cid");
+    	  boolean status=applicantService.getApplicationStatus(id, jobtitle, companyname);
+    	  mv.addObject("status", status);
+    	  return mv;
+    	  
+      }
+      
 		     
 }

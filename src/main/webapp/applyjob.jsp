@@ -238,6 +238,11 @@ a:hover {
 
        
         <form action="apply" method="post" id="passwordForm" enctype="multipart/form-data" onsubmit="return validateFile()">
+          <div class="mb-3">
+            <label for="password1">Job ID:</label>
+            <input type="text" class="form-control" value="${job.id}"id="jobid " name="jobid" readonly
+                required>
+        </div>
             <div class="mb-3">
                 <label for="email">Job Title:</label>
                 <input type="text" class="form-control"id="jobtitle"  name="jobtitle" value="${job.jobtitle}" readonly required>

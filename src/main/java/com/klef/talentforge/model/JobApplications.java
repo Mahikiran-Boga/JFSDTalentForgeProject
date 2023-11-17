@@ -11,10 +11,18 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name="jobapplications_table")
 public class JobApplications {
+	
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="jobapplication_id")
+    private int applicationid;
+    
     @Column(name="applicant_id")
     private int id;
+    
+    @Column(name = "job_id")
+    private int jobid;
+	
 	@Column(name="job_title",nullable=false,length = 100)
     private String jobtitle;
     @Column(name="applicantion_fname",nullable=false,length = 50)
@@ -31,6 +39,10 @@ public class JobApplications {
     private String contactno;
     @Column(name="applicantion_companyname",nullable=false,length = 1000)
     private String companyname;
+    @Column(name="applicantion_status",nullable=false)
+    private boolean applicationstatus;
+    
+    
     
     @Column(name = "bfileContent", columnDefinition = "LONGBLOB")
 	@Lob
@@ -114,5 +126,29 @@ public class JobApplications {
 
 	public void setBfileContent(byte[] bfileContent) {
 		this.bfileContent = bfileContent;
+	}
+
+	public boolean isApplicationstatus() {
+		return applicationstatus;
+	}
+
+	public void setApplicationstatus(boolean applicationstatus) {
+		this.applicationstatus = applicationstatus;
+	}
+
+	public int getApplicationid() {
+		return applicationid;
+	}
+
+	public void setApplicationid(int applicationid) {
+		this.applicationid = applicationid;
+	}
+
+	public int getJobid() {
+		return jobid;
+	}
+
+	public void setJobid(int jobid) {
+		this.jobid = jobid;
 	}
 }

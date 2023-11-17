@@ -16,6 +16,37 @@
   text-align: center;
   font-family: arial;
 }
+.verification-container {
+      display: flex;
+
+      align-items: center;
+    }
+
+    .verified-tick {
+      width: 40px;
+      height: 40px;
+      background-color: #2ecc71; /* Green color */
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+    }
+
+    .tick-icon {
+ 
+      width: 25px;
+      height: 25px;
+      fill: #fff; /* White color */
+    }
+
+    .verification-text {
+      font-size: 18px;
+      color: #333; /* Dark color */
+      line-height: 40px; /* Adjust line-height to match the height of the circle */
+    }
+    
+    
 
 .title {
   color: grey;
@@ -34,17 +65,6 @@
       display: flex;
       width: 100%;
     }
-    .form-control option {
-    background-color: #fff; /* Background color */
-    color: #333; /* Text color */
-    font-size: 14px; /* Text size */
-}
-
-/* Style for the selected option */
-.form-control option:checked {
-    background-color: #f0f0f0; /* Background color when selected */
-    font-weight: bold; /* Bold text when selected */
-}
 
     #left-half {
       flex: 0 0 80%;
@@ -102,14 +122,22 @@
       border-radius: 0%;
     }
 
-    .apply-btn {
-      background-color: darkblue;
-      color: #fff;
-      padding: 8px 12px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
+   .apply-btn {
+  display: inline-block;
+  background-color: darkblue;
+  color: #fff;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+    text-align: center; /* Center the text */
+  
+  text-decoration: none; /* Remove underline */
+  cursor: pointer;
+}
+
+.apply-btn:hover {
+  background-color: navy; /* Change color on hover if desired */
+}
 
     #right-half {
       flex: 0 0 20%;
@@ -135,85 +163,56 @@
       font-weight: bold;
     }
 
-   .container {
-    max-width: 600px;
-    margin: auto;
+  #employee {
+	font-family: Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
 }
 
-.registration-section {
-    text-align: center;
-    padding: 20px;
+#employee td, #employee th {
+	border: 1px solid #ddd;
+	padding: 8px;
+	text-align: center;
 }
 
-.card {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
+#employee tr:nth-child(even) {
+	background-color: white;
 }
 
-.card-body {
-    padding: 20px;
+#employee tr:hover {
+	background-color: #ddd;
 }
 
-#registerimage {
-    max-width: 100%;
-    height: auto;
+#employee th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	background-color: darkblue;
+	color: white;
 }
 
-h5 {
-    color: red;
+.btn {
+	background-color: skyblue;
+	padding: 5px 16px;
+	font-size: 12px;
+	cursor: pointer;
 }
 
-.card p {
-    color: darkblue;
-    font-size: 24px;
+.view-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-decoration: none;
+  background-color: #3498db; /* Blue color */
+  color: #fff; /* White color */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-form {
-    margin-top: 20px;
+.view-button:hover {
+  background-color: #2980b9; /* Darker blue color on hover */
 }
-
-.form-control {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.btn-primary {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-}
-
-a {
-    text-decoration: none;
-    color: #007bff;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-.error {
-    color: red;
-}
-
-/* Additional styles for responsiveness */
-@media (max-width: 768px) {
-    .container {
-        width: 100%;
-    }
-}
+	</style>
   </style>
 </head>
 <body>
@@ -227,37 +226,50 @@ a:hover {
 
       <!-- Sample job cards -->
      <br><br><br><br>
-  <div class="card-body">
-       <p style="color: darkblue; font-size: 24px;"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆 𝑨𝒑𝒑𝒍𝒚 𝑱𝒐𝒃</p>
-       
-          <h3><font color="green">${msg}</font></h3><br>
-       
-        <form action="applicanthome" method="get" id="passwordForm" >
-        
-         <button type="submit" class="btn btn-primary">Search For More Jobs..</button>
-           
-        </form>
+    <c:forEach items="${jobslist}" var="job">
+    
+ <table id="employee">
+			<tr bgcolor="black" style="color: white">
+				<th>Application ID</th>
+				<th>Company</th>
+				<th>Job Title</th>
+				
+				<th>Applicant Email</th>
+				<th>View Application Status</th>
+				
+				
+				
+			</tr>
+			<c:forEach items="${jobslist}" var="job">
+				<tr>
+					<td><c:out value="${job.id}" /></td>
+										<td><img src='displaycompanyimage?id=${job.id}' alt="Company Logo" height="45px" width="80px"></td>
+					
+					<td><c:out value="${job.jobtitle}" /></td>
+					
+					</td>
+					<td><c:out value="${job.email}" /></td>
+						<td>  <a href="/getApplicationStatus?jobtitle=${job.jobtitle}&companyname=${job.companyname}" class="view-button">View</a>
+						</td>
+				</tr>
+			</c:forEach>
+		</table>
 
- </div> </div>
+   </c:forEach>
+ </div>
    <br>
     <div id="right-half">
     <br><br><br><br>
       <div class="card">
-  <img src="/images/wipro.jpg" alt="John" style="width:100%">
-  <h1 style="color: black;">John Doe</h1>
-  <pstyle="color: black;" class="title">CEO & Founder, Example</p>
-  <p>Harvard University</p>
-  <div style="margin: 24px 0;">
-    <a href="#"><i class="fa fa-dribbble"></i></a> 
-    <a href="#"><i class="fa fa-twitter"></i></a>  
-    <a href="#"><i class="fa fa-linkedin"></i></a>  
-    <a href="#"><i class="fa fa-facebook"></i></a> 
-  </div>
+  <img src='displayApplicantimage?id=${cid}' alt="Upload Your image here" style="width:100%"   height="170px" id="profileimage">
+   <p style="color: black;">${fname} ${lname}  </p>
+  
+  
 </div>
 
       <nav>
         <a href="applicanthome">Home</a>
-        <a href="#">My Applications</a>
+        <a href="myjobApplications">My Applications</a>
         <a href="#">About</a>
           <a href="#">Settings</a>
             <a href="/">Logout</a>
@@ -278,20 +290,5 @@ a:hover {
       });
     });
   </script>
-  
-   <script>
-        function validateFile() {
-            var fileInput = document.getElementById('book');
-            var filePath = fileInput.value;
-            var allowedExtensions = /(\.pdf)$/i;
-            
-            if (!allowedExtensions.exec(filePath)) {
-                alert('Invalid file format. Please select a .pdf file.');
-                fileInput.value = ''; // Clear the file input field
-                return false;
-            }
-            return true;
-        }
-    </script>
 </body>
 </html>

@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.klef.talentforge.model.Job;
+import com.klef.talentforge.model.JobApplications;
 
 @Repository
 public interface JobRepository extends JpaRepository<Job, Integer>{
@@ -16,6 +17,13 @@ public interface JobRepository extends JpaRepository<Job, Integer>{
 	
 	@Query("from Job where companyname=?1 ")
 	public List<Job> viewalljobsbycompanyname(String companyname);
+	
+	@Query("from Job where jobtitle=?1 and companyname=?2")
+	public Job viewJobByTitleAndCompanyName(String title, String companyname);
+	
+	
+	
+	
 	
 	
 	

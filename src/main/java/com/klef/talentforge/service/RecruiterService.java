@@ -23,5 +23,6 @@ public interface RecruiterService
 	  
 	public String deletejob(int id);
 	
+	
 
 }
