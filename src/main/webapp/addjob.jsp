@@ -102,12 +102,12 @@ a:hover {
       <li><a href="recruiterhome">Home</a></li>
       <li><a href="postajob">Post a Job</a></li>
       <li>
-        <a href="#" class="desktop-item">Dropdown Menu</a>
+        <a href="#" class="desktop-item">Actions	</a>
         <input type="checkbox" id="showDrop">
         <label for="showDrop" class="mobile-item">Dropdown Menu</label>
         <ul class="drop-menu">
-          <li><a href="recruiterviewjobs">view jobs</a></li>
-          <li><a href="#">Drop menu 2</a></li>
+          <li><a href="recruiterviewjobs">VIEW ALL JOBS</a></li>
+          <li><a href="viewalljobapplications">JOB APPLICATIONS</a></li>
           <li><a href="#">Drop menu 3</a></li>
           <li><a href="#">Drop menu 4</a></li>
         </ul>
@@ -151,7 +151,7 @@ a:hover {
           </div>
         </div>
       </li>
-      <li><a href="#">Feedback</a></li>
+      <li><a href="#">Logout</a></li>
     </ul>
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>

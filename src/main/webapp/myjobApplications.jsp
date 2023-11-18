@@ -226,7 +226,7 @@
 
       <!-- Sample job cards -->
      <br><br><br><br>
-    <c:forEach items="${jobslist}" var="job">
+
     
  <table id="employee">
 			<tr bgcolor="black" style="color: white">
@@ -242,8 +242,8 @@
 			</tr>
 			<c:forEach items="${jobslist}" var="job">
 				<tr>
-					<td><c:out value="${job.id}" /></td>
-										<td><img src='displaycompanyimage?id=${job.id}' alt="Company Logo" height="45px" width="80px"></td>
+					<td><c:out value="${job.applicationid}" /></td>
+										<td><img src='displaycompanyimage?id=${job.jobid}' alt="Company Logo" height="45px" width="80px"></td>
 					
 					<td><c:out value="${job.jobtitle}" /></td>
 					
@@ -255,7 +255,6 @@
 			</c:forEach>
 		</table>
 
-   </c:forEach>
  </div>
    <br>
     <div id="right-half">

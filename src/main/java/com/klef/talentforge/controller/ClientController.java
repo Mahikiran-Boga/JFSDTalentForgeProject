@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -34,6 +35,9 @@ import com.klef.talentforge.service.RecruiterService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
 @Controller
@@ -493,5 +497,32 @@ public class ClientController
     	  
       }
       
-		     
+	  @GetMapping("viewalljobapplications")
+	  public ModelAndView viewalljobapplications(HttpServletRequest request) {
+		  ModelAndView mv=new ModelAndView("viewallapplications");
+		  HttpSession session=request.getSession();
+		  String companyname=(String)session.getAttribute("rcompanynmae");
+		  List<JobApplications> jobslist=recruiterService.viewalljobapplicationsByCompany(companyname);
+		  mv.addObject("jobslist", jobslist);
+		  return mv;
+		  
+	  }
+	  
+	  @GetMapping("/download/{id}/{jobtitle}")
+	   public ResponseEntity<byte[]> downloadBook(@PathVariable("id") int fileid,@PathVariable("jobtitle") String jobtitle) {
+	       JobApplications job = recruiterService.ViewJobApplicationByID(fileid,jobtitle);
+
+	       if (job != null) {
+	           byte[] response = job.getBfileContent();
+	           return ResponseEntity.ok()
+	                   .contentType(MediaType.parseMediaType("application/pdf"))
+	                   .header(
+	                           HttpHeaders.CONTENT_DISPOSITION,
+	                           "attachment; filename=\"" + fileid +".pdf"+ "\""
+	                   )
+	                   .body(response);
+	       } else {
+	           return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+	       }
+	   }
 }

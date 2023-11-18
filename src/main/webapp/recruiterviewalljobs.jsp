@@ -32,8 +32,8 @@
 #employee th {
 	padding-top: 12px;
 	padding-bottom: 12px;
-	background-color: #000000;
-	color: white;
+	background-color: skyblue;
+	color: black;
 }
 
 .btn {
@@ -56,12 +56,12 @@
       <li><a href="recruiterhome">Home</a></li>
       <li><a href="postajob">Post a Job</a></li>
       <li>
-        <a href="#" class="desktop-item">Dropdown Menu</a>
+        <a href="#" class="desktop-item">Actions</a>
         <input type="checkbox" id="showDrop">
         <label for="showDrop" class="mobile-item">Dropdown Menu</label>
         <ul class="drop-menu">
-          <li><a href="recruiterviewjobs">view jobs</a></li>
-          <li><a href="#">Drop menu 2</a></li>
+          <li><a href="recruiterviewjobs">VIEW ALL JOBS</a></li>
+          <li><a href="viewalljobapplications">JOB APPLICATIONS</a></li>
           <li><a href="#">Drop menu 3</a></li>
           <li><a href="#">Drop menu 4</a></li>
         </ul>
@@ -105,7 +105,7 @@
           </div>
         </div>
       </li>
-      <li><a href="#">Feedback</a></li>
+      <li><a href="#">Logout</a></li>
     </ul>
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>
@@ -116,12 +116,13 @@
 <br>
 <br>
 <table id="employee">
-			<tr bgcolor="black" style="color: white">
-				<th>ID</th>
-				<th>NAME</th>
-				<th>Discription</th>
-				<th>salary</th>
-				<th>Logo</th>
+			<tr bgcolor="black" style="color: black">
+				<th>Job ID</th>
+				<th>Job Title</th>
+				<th>Company</th>
+				<th>Description</th>
+				<th>Salary</th>
+				
 				<th>Action</th>
 				
 				
@@ -130,10 +131,11 @@
 				<tr>
 					<td><c:out value="${job.id}" /></td>
 					<td><c:out value="${job.jobtitle}" /></td>
+				    <td><img src='displaycompanyimage?id=${job.id}' alt="Company Logo" height="45px" width="80px"></td>
+					
 					<td><c:out value="${job.description}" />
 					</td>
 					<td><c:out value="${job.salary}" /></td>
-					<td><img src='displaycompanyimage?id=${job.id}' alt="Company Logo" height="45px" width="80px"></td>
 					<td><a href="deletejob?id=${job.id}">Delete</a></td>
 				</tr>
 			</c:forEach>

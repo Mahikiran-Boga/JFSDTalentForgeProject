@@ -9,6 +9,21 @@
   <title>TalentForge</title>
 
   <style>
+        input[type="file"] {
+            display: inline-block;
+            padding: 1px 5px;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            background-color: grey ;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+
+        /* Style the custom button or container */
+       
   .verification-container {
       display: flex;
 
@@ -103,6 +118,14 @@
       border-radius: 4px;
       cursor: pointer;
     }
+    .btn{
+      padding: 4px 6px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+    }
 
     .job-card {
       background-color: #fff;
@@ -165,7 +188,6 @@
 }
   </style>
 </head>
-<body>
   <div id="container">
     <div id="left-half">
       <div id="search-bar">
@@ -211,7 +233,7 @@
   <img src='displayApplicantimage?id=${cid}' alt="Upload Your image here" style="width:100%"   height="170px" id="profileimage">
    <input type="file" class="form-control"  name="ApplicantImage"
                 required>
-                <button type="submit" class="btn btn-primary">Change</button>
+                <button type="submit" class="btn">Change</button>
                
                 </form>
   <p style="color: black;">${fname} ${lname}  </p>

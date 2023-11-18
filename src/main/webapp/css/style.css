@@ -10,7 +10,7 @@ nav{
   z-index: 99;
   width: 100%;
   
-  background: #242526;
+  background:darkblue;
 }
 nav .wrapper{
   position: relative;
@@ -45,20 +45,20 @@ nav .wrapper{
   transition: all 0.3s ease;
 }
 .nav-links li a:hover{
-  background: #3A3B3C;
+  background:sky blue;
 }
 .nav-links .mobile-item{
   display: none;
 }
 .nav-links .drop-menu{
   position: absolute;
-  background: #242526;
+  background:darkblue;
   width: 180px;
   line-height: 45px;
   top: 85px;
   opacity: 0;
   visibility: hidden;
-  box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+  box-shadow: darkblue;
 }
 .nav-links li:hover .drop-menu,
 .nav-links li:hover .mega-box{
@@ -84,7 +84,7 @@ nav .wrapper{
   visibility: hidden;
 }
 .mega-box .content{
-  background: #242526;
+  background:white;
   padding: 25px 20px;
   display: flex;
   width: 100%;

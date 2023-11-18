@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.klef.talentforge.model.Job;
+import com.klef.talentforge.model.JobApplications;
 import com.klef.talentforge.model.Recruiter;
+import com.klef.talentforge.repository.JobApplicationsRepository;
 import com.klef.talentforge.repository.JobRepository;
 import com.klef.talentforge.repository.RecruiterRepository;
 
@@ -21,6 +23,8 @@ public class RecruiterServiceImpl implements RecruiterService{
 	@Autowired
 	private JobRepository jobRepository;
 	
+	@Autowired
+	private JobApplicationsRepository jobapplicationsRepository;
 	
 	
 	@Override
@@ -81,6 +85,19 @@ public class RecruiterServiceImpl implements RecruiterService{
 	    }
 	    return msg;
 	  }
+
+	@Override
+	public List<JobApplications> viewalljobapplicationsByCompany(String companyname) {
+		List<JobApplications> jobslist=jobapplicationsRepository.viewalljobapplicationsByCompany(companyname);
+		
+		return jobslist;
+	}
+
+	@Override
+	public JobApplications ViewJobApplicationByID(int jobid,String jobtitle) {
+		JobApplications job=jobapplicationsRepository.viewJobApplicationBYID(jobid,jobtitle);
+		return job;
+	}
 
 	
 

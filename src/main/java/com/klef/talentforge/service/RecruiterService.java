@@ -3,6 +3,7 @@ package com.klef.talentforge.service;
 import java.util.List;
 
 import com.klef.talentforge.model.Job;
+import com.klef.talentforge.model.JobApplications;
 import com.klef.talentforge.model.Recruiter;
 
 public interface RecruiterService
@@ -22,6 +23,12 @@ public interface RecruiterService
 	public List<Job> viewjobsbycompanyname(String companyname);
 	  
 	public String deletejob(int id);
+	
+	public List<JobApplications> viewalljobapplicationsByCompany(String companyname);
+	
+	public JobApplications ViewJobApplicationByID(int jobid,String jobtitle);
+	
+	
 	
 	
 
