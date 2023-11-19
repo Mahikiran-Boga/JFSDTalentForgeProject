@@ -8,6 +8,7 @@ import com.klef.talentforge.model.Applicant;
 import com.klef.talentforge.model.ApplicantImage;
 import com.klef.talentforge.model.Job;
 import com.klef.talentforge.model.JobApplications;
+import com.klef.talentforge.model.ViewApplicationStatus;
 
 public interface ApplicantService {
 
@@ -33,6 +34,7 @@ public interface ApplicantService {
 	
 	public boolean getApplicationStatus(int id,String title,String companyName);
 
+	public List<ViewApplicationStatus> viewapplicationStatus(int id,String jobtitle);
 
 
 }

@@ -9,9 +9,11 @@ import org.springframework.stereotype.Service;
 import com.klef.talentforge.model.Job;
 import com.klef.talentforge.model.JobApplications;
 import com.klef.talentforge.model.Recruiter;
+import com.klef.talentforge.model.ViewApplicationStatus;
 import com.klef.talentforge.repository.JobApplicationsRepository;
 import com.klef.talentforge.repository.JobRepository;
 import com.klef.talentforge.repository.RecruiterRepository;
+import com.klef.talentforge.repository.ViewApplicationStatusRepository;
 
 @Service
 public class RecruiterServiceImpl implements RecruiterService{
@@ -25,6 +27,9 @@ public class RecruiterServiceImpl implements RecruiterService{
 	
 	@Autowired
 	private JobApplicationsRepository jobapplicationsRepository;
+	
+	@Autowired
+	private ViewApplicationStatusRepository applicationStatusRepository;
 	
 	
 	@Override
@@ -98,7 +103,13 @@ public class RecruiterServiceImpl implements RecruiterService{
 		JobApplications job=jobapplicationsRepository.viewJobApplicationBYID(jobid,jobtitle);
 		return job;
 	}
-
+   
+	@Override
+	  public String addApplicationStatus(ViewApplicationStatus viewApplicationStatus) {
+	    applicationStatusRepository.save(viewApplicationStatus);
+	    return "Sucessfully Updated";
+	  }
+	
 	
 
 }

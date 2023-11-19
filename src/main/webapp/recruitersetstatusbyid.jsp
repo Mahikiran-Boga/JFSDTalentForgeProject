@@ -6,6 +6,8 @@
 <head>
   <meta charset="UTF-8">
   <title>TalentForge Recruiter Home</title>
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/style.css">
 	<style>
 	  .button {
@@ -58,6 +60,67 @@
   border-radius: 5px;
   background-color: lightpink;
 }
+
+
+  .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      margin: auto;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    h5 {
+      color: red;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    input[type="text"] {
+
+      width: 100%;
+      padding: 8px;
+      
+      box-sizing: border-box;
+      border-radius: 4px;
+      
+      
+    }
+
+    label {
+      margin-top: 10px;
+      color: #333; /* Dark color */
+      font-size: 16px;
+    }
+
+    select,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      margin: 6px 0;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="submit"] {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
 	</style>
 </head>
 <body>
@@ -131,35 +194,35 @@
 <br>
 <br>
 <br>
-<table id="employee">
-			<tr bgcolor="darkblue" style="color: white">
-				<th>Application ID</th>
-				<th>Applicant ID</th>
-				<th>Job Title</th>
-				<th>Email</th>
-				<th>Experience</th>
-				<th>Contact No</th>
-				<th>Resume</th>
-				<th>Update Status</th>
-				
-				
-			</tr>
-			<c:forEach items="${jobslist}" var="job">
-				<tr>
-					<td><c:out value="${job.applicationid}" /></td>
-					<td><c:out value="${job.id}" /></td>
-					<td><c:out value="${job.jobtitle}" />
-					</td>
-					<td><c:out value="${job.email}" /></td>
-					<td><c:out value="${job.experience}" /></td>
-					<td><c:out value="${job.contactno}" /></td>
-					<td><a href="/download/${job.id}/${job.jobtitle}"><button class="btn">Download Resume</button></a>
-					</td>
-					
-					<td><a href="updateapplicationstatus?id=${job.id}&jobtitle=${job.jobtitle}">Update Status</a></td>
-				</tr>
-			</c:forEach>
-		</table>
+<h5 align="center" style="color:red">${message}</h5>
+   <div class="card">
+    <h2 align="center" style="color:green">Update Application Status</h2>
+    
+    <form action="addapplicationstatus" method="post">
+      <!-- Application Status Combo Box -->
+        <label for="applicationStatus">Applicant ID:</label>
+      
+        <input type="text" name="id" value="${id}"readonly>
+        <label for="applicationStatus">Job Title :</label>
+        
+        <input type="text" name="jobtitle" value="${jobtitle} "readonly>
+        
+      <label for="applicationStatus">Application Status:</label>
+      <select name="applicationStatus" id="applicationStatus" required>
+        <option value="" >Set Status</option>
+        <option value="Passed first Round">Passed first Round</option>
+        <option value="Passed second Round">Passed second Round</option>
+        <option value="Passed third Round">Passed third Round</option>
+        <option value="Application Rejected">Application Rejected</option>
+      </select>
+
+      <label for="comment">Comment:</label>
+      <textarea name="comment" id="comment" rows="4" cols="50" required></textarea>
+
+      <!-- Submit Button -->
+      <input type="submit" value="Submit">
+    </form>
+  </div>
 <!-- partial -->
 </body>
 </html>

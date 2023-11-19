@@ -13,10 +13,12 @@ import com.klef.talentforge.model.Applicant;
 import com.klef.talentforge.model.ApplicantImage;
 import com.klef.talentforge.model.Job;
 import com.klef.talentforge.model.JobApplications;
+import com.klef.talentforge.model.ViewApplicationStatus;
 import com.klef.talentforge.repository.ApplicantRepository;
 import com.klef.talentforge.repository.JobApplicationsRepository;
 import com.klef.talentforge.repository.JobRepository;
 import com.klef.talentforge.repository.Uploadapplicantprofileimage;
+import com.klef.talentforge.repository.ViewApplicationStatusRepository;
 
 import org.springframework.util.StringUtils;
 
@@ -35,6 +37,10 @@ public class ApplicantServiceImpl implements ApplicantService {
 	
 	@Autowired
 	  private Uploadapplicantprofileimage uploadapplicantprofileimage;
+	
+	@Autowired
+	private ViewApplicationStatusRepository applicationStatusRepository;
+	
 	
 	@Override
 	public String register(Applicant applicant) {
@@ -132,6 +138,12 @@ public class ApplicantServiceImpl implements ApplicantService {
 	public boolean getApplicationStatus(int id, String title, String companyName) {
 		boolean status=jobapplicationsRepository.getApplicationStatus(id, title, companyName);
 		return status;
+	}
+
+	@Override
+	public List<ViewApplicationStatus> viewapplicationStatus(int id, String jobtitle) {
+		
+		return applicationStatusRepository.getStatusByIDAndTitle(id, jobtitle);
 	}
 
 	

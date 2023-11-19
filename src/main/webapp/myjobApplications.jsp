@@ -249,7 +249,7 @@
 					
 					</td>
 					<td><c:out value="${job.email}" /></td>
-						<td>  <a href="/getApplicationStatus?jobtitle=${job.jobtitle}&companyname=${job.companyname}" class="view-button">View</a>
+						<td>  <a href="getApplicationStatus?id=${job.id}&jobtitle=${job.jobtitle}" class="view-button">View</a>
 						</td>
 				</tr>
 			</c:forEach>

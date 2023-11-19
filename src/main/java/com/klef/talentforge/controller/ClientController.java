@@ -28,6 +28,7 @@ import com.klef.talentforge.model.ApplicantImage;
 import com.klef.talentforge.model.Job;
 import com.klef.talentforge.model.JobApplications;
 import com.klef.talentforge.model.Recruiter;
+import com.klef.talentforge.model.ViewApplicationStatus;
 import com.klef.talentforge.service.AdminService;
 import com.klef.talentforge.service.ApplicantService;
 import com.klef.talentforge.service.EmailManager;
@@ -484,19 +485,7 @@ public class ClientController
            return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(imageBytes);
          }
 
-      @GetMapping("getApplicationStatus")
-      public ModelAndView getApplicationsStatus(@RequestParam("jobtitle") String jobtitle,
-    		  @RequestParam("companyname") String companyname,HttpServletRequest  request) 
-      {
-    	  ModelAndView mv=new ModelAndView("myapplicationStatus");
-    	  HttpSession session=request.getSession();
-    	  int id=(int)session.getAttribute("cid");
-    	  boolean status=applicantService.getApplicationStatus(id, jobtitle, companyname);
-    	  mv.addObject("status", status);
-    	  return mv;
-    	  
-      }
-      
+  
 	  @GetMapping("viewalljobapplications")
 	  public ModelAndView viewalljobapplications(HttpServletRequest request) {
 		  ModelAndView mv=new ModelAndView("viewallapplications");
@@ -525,4 +514,51 @@ public class ClientController
 	           return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 	       }
 	   }
+	   
+	  @GetMapping("updateapplicationstatus") 
+	  public ModelAndView updatestatusofApplication(@RequestParam("id") int id,@RequestParam("jobtitle") String jobtitle)
+	  {
+		  ModelAndView mv=new ModelAndView("recruitersetstatusbyid");
+		  mv.addObject("id", id);
+		  mv.addObject("jobtitle", jobtitle);
+		  return mv;
+	  }
+	  
+	  @PostMapping("addapplicationstatus")
+	  public ModelAndView addApplicationStatus(HttpServletRequest request)
+	  {
+		  ModelAndView mv=new ModelAndView("recruitersetstatusbyid");
+		  int id=Integer.parseInt(request.getParameter("id"));
+		  String jobtitle=request.getParameter("jobtitle");
+		  String status=request.getParameter("applicationStatus");
+		  String comment=request.getParameter("comment");
+		  
+		  ViewApplicationStatus stat=new ViewApplicationStatus();
+		  stat.setId(id);
+		  stat.setApplicationstatustittle(jobtitle);
+		  stat.setApplicationstatus(status);
+		  stat.setComment(comment);
+		  
+		  String msg=recruiterService.addApplicationStatus(stat);
+		  mv.addObject("message", msg);
+		  
+		  return mv;
+	
+	  }
+	  
+	    @GetMapping("getApplicationStatus")
+	      public ModelAndView getApplicationsStatus(@RequestParam("id") int id,
+	    		  @RequestParam("jobtitle") String jobtitle) 
+	      {
+	    	  ModelAndView mv=new ModelAndView("myapplicationStatus");
+	    	  System.err.println(id+" "+jobtitle);
+	    	  List<ViewApplicationStatus> statuslist=applicantService.viewapplicationStatus(id, jobtitle);
+	    	  mv.addObject("statuslist", statuslist);
+	    	  return mv;
+	    	  
+	      }
+	    
+	    
+	      
+	  
 }
