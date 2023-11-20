@@ -10,65 +10,70 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "applicationstatus_table")
 public class ViewApplicationStatus {
+	
 
 	@Id
-    @Column(name="applicantion_id")
+    @Column(name="applicationid")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
     private int applicationid;
 	
-	 @Column(name="applicant_id")
-	 private int id;
-	
-	@Column(name="applicationstatus_tittle")
-	private String Applicationstatustittle;
-	
-
-	@Column(name="applicationstatus_status")
-	private String Applicationstatus;
-	@Column(name="applicationstatus_comment")
-	private String comment;
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getApplicationstatus() {
-		return Applicationstatus;
-	}
-	public void setApplicationstatus(String applicationstatus) {
-		Applicationstatus = applicationstatus;
-	}
-	public String getComment() {
-		return comment;
-	}
-	public void setComment(String comment) {
-	
-		this.comment = comment;
-	}
-	
-	public String getApplicationstatustittle() {
-		return Applicationstatustittle;
-	}
-	public void setApplicationstatustittle(String applicationstatustittle) {
-		Applicationstatustittle = applicationstatustittle;
-	}
 	public int getApplicationid() {
 		return applicationid;
 	}
+
 	public void setApplicationid(int applicationid) {
 		this.applicationid = applicationid;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getApplicationstatustittle() {
+		return applicationstatustittle;
+	}
+
+	public void setApplicationstatustittle(String applicationstatustittle) {
+		this.applicationstatustittle = applicationstatustittle;
+	}
+
+	public String getApplicationstatus() {
+		return applicationstatus;
+	}
+
+	public void setApplicationstatus(String applicationstatus) {
+		this.applicationstatus = applicationstatus;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
 	@Override
 	public String toString() {
-		return "ViewApplicationStatus [id=" + id + ", Applicationstatus=" + Applicationstatus + ", comment=" + comment
-				+ "]";
+		return "ViewApplicationStatus [applicationid=" + applicationid + ", id=" + id + ", applicationstatustittle="
+				+ applicationstatustittle + ", applicationstatus=" + applicationstatus + ", comment=" + comment + "]";
 	}
+
+	@Column(name="applicant_id")
+	private int id;
 	
+	@Column(name="applicationstatustittle")
+	private String applicationstatustittle;
 	
+
+	@Column(name="applicationstatus")
+	private String applicationstatus;
 	
-	
-	
-	
+	@Column(name="comment")
+	private String comment;
 	
 }

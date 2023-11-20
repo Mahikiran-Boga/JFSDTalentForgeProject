@@ -141,9 +141,10 @@ public class ApplicantServiceImpl implements ApplicantService {
 	}
 
 	@Override
-	public List<ViewApplicationStatus> viewapplicationStatus(int id, String jobtitle) {
+	public List<ViewApplicationStatus> viewapplicationStatus(int id,String jobtitle) {
 		
-		return applicationStatusRepository.getStatusByIDAndTitle(id, jobtitle);
+		System.err.println(jobtitle);
+		return applicationStatusRepository.getStatusByIDAndTitle(jobtitle,id);
 	}
 
 	

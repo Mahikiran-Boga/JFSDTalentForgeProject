@@ -535,15 +535,14 @@ public class ClientController
 		  
 		  ViewApplicationStatus stat=new ViewApplicationStatus();
 		  stat.setId(id);
-		  stat.setApplicationstatustittle(jobtitle);
 		  stat.setApplicationstatus(status);
+		  stat.setApplicationstatustittle(jobtitle);
 		  stat.setComment(comment);
 		  
 		  String msg=recruiterService.addApplicationStatus(stat);
 		  mv.addObject("message", msg);
 		  
-		  return mv;
-	
+		  return mv;	
 	  }
 	  
 	    @GetMapping("getApplicationStatus")
@@ -552,7 +551,9 @@ public class ClientController
 	      {
 	    	  ModelAndView mv=new ModelAndView("myapplicationStatus");
 	    	  System.err.println(id+" "+jobtitle);
-	    	  List<ViewApplicationStatus> statuslist=applicantService.viewapplicationStatus(id, jobtitle);
+	    	  
+	    	  List<ViewApplicationStatus> statuslist=applicantService.viewapplicationStatus(id,jobtitle);
+	    	  System.out.println(statuslist.size());
 	    	  mv.addObject("statuslist", statuslist);
 	    	  return mv;
 	    	  
