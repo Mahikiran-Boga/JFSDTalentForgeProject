@@ -17,6 +17,19 @@ public class ViewApplicationStatus {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
     private int applicationid;
 	
+	@Column(name="applicant_id")
+	private int id;
+	
+	@Column(name="applicationstatustittle")
+	private String applicationstatustittle;
+	
+
+	@Column(name="applicationstatus")
+	private String applicationstatus;
+	
+	@Column(name="comment")
+	private String comment;
+	
 	public int getApplicationid() {
 		return applicationid;
 	}
@@ -63,17 +76,6 @@ public class ViewApplicationStatus {
 				+ applicationstatustittle + ", applicationstatus=" + applicationstatus + ", comment=" + comment + "]";
 	}
 
-	@Column(name="applicant_id")
-	private int id;
-	
-	@Column(name="applicationstatustittle")
-	private String applicationstatustittle;
-	
 
-	@Column(name="applicationstatus")
-	private String applicationstatus;
-	
-	@Column(name="comment")
-	private String comment;
 	
 }
