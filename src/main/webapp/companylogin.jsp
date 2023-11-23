@@ -1637,7 +1637,7 @@
         <form action="checkrecruiterlogin" method="post">
             <div class="mb-3">
                 <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+                <input type="email" class="form-control" id="email" name="email" pattern=".+@gmail\.com" title="email format must be xxx@gmail.com" placeholder="Enter email">
             </div>
            
             <div class="mb-3">

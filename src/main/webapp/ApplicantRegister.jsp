@@ -1668,7 +1668,7 @@ margin-top:300px;
         <form action="registration" method="post" id="passwordForm">
             <div class="mb-3">
                 <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" pattern=".+@gmail\.com" title="email format must be xxx@gmail.com" required>
             </div>
            
             <div class="mb-3">
@@ -1691,7 +1691,7 @@ margin-top:300px;
             <div class="mb-3">
                 <label for="phone_number">Phone Number:</label>
                 <input type="tel" class="form-control" id="phone_number" name="contactnumber"
-                    placeholder="Enter phone number" required>
+                pattern="[6789][0-9]{9}"    placeholder="Enter phone number" required>
             </div>
             <div class="mb-3">
                 <label for="address">Address:</label>
@@ -1701,7 +1701,7 @@ margin-top:300px;
             <div class="mb-3">
             <label for="password1">Password:</label>
             <input type="password" class="form-control" id="password1" name="password"
-                placeholder="Enter password" required>
+                pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,30})" placeholder="Enter password" title="Password must contain atleast one number [0-9],uppercase [A-Z],special character [!@#$%^&*], length > 8!! try again!!" required >
         </div>
         <div class="mb-3">
             <label for="password2">Confirm Password:</label>
@@ -1711,7 +1711,7 @@ margin-top:300px;
             
         </div>
       
-            <a href="/">Login Here</a>
+            <a href="ApplicantLogin">Login Here</a>
                <br>
               <br>
        
