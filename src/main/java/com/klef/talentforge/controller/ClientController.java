@@ -221,8 +221,18 @@ public class ClientController
 		return mv;
 	}
 	@GetMapping("companylogin")
-	public ModelAndView companylogin() {
+	public ModelAndView companylogin() 
+	{
+		long applicantCount=adminService.applicantCount();
+		long recruiterCount=adminService.recruiterCount();
+		long jobsCount=adminService.JobsCount();
+		long jobApplicationsCount=adminService.JobApplicationsCount();
 		ModelAndView mv=new ModelAndView("companylogin");
+
+		mv.addObject("applicantCount", applicantCount);
+		mv.addObject("recruiterCount",recruiterCount );
+		mv.addObject("jobsCount",jobsCount );
+		mv.addObject("jobApplicationsCount",jobApplicationsCount );
 		return mv;
 	}
 	@GetMapping("companyregistration")
@@ -239,10 +249,19 @@ public class ClientController
 		ModelAndView mv=new ModelAndView();
 		HttpSession session=request.getSession();
 		Admin adm=adminService.checkadminlogin(username, password);
+		long applicantCount=adminService.applicantCount();
+		long recruiterCount=adminService.recruiterCount();
+		long jobsCount=adminService.JobsCount();
+		long jobApplicationsCount=adminService.JobApplicationsCount();
+		
 		if(adm!=null) {
 			 
 			session.setAttribute("uname", adm.getUsername());
 			mv.setViewName("adminhome");
+			mv.addObject("applicantCount", applicantCount);
+			mv.addObject("recruiterCount",recruiterCount );
+			mv.addObject("jobsCount",jobsCount );
+			mv.addObject("jobApplicationsCount",jobApplicationsCount );
 			
 		}
 	    else  {
@@ -563,10 +582,28 @@ public class ClientController
 		}
 	   
 	    @GetMapping("ApplicantLogin")
-		public ModelAndView applicantlogin() {
+		public ModelAndView applicantlogin() 
+	    {
+	    	
 			ModelAndView mv=new ModelAndView("ApplicantLogin");
 			return mv;
 		}
 	    
+	  @GetMapping("adminhome")
+	  public ModelAndView adminhome() {
+		  long applicantCount=adminService.applicantCount();
+			long recruiterCount=adminService.recruiterCount();
+			long jobsCount=adminService.JobsCount();
+			long jobApplicationsCount=adminService.JobApplicationsCount();
+			
+		  ModelAndView mv=new ModelAndView("adminhome");
+		  mv.addObject("applicantCount", applicantCount);
+			mv.addObject("recruiterCount",recruiterCount );
+			mv.addObject("jobsCount",jobsCount );
+			mv.addObject("jobApplicationsCount",jobApplicationsCount );
+		  return mv;
+	  }
+	  
+	  
 	  
 }

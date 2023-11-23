@@ -1676,7 +1676,7 @@ margin-top:300px;
             </div>
             <div class="mb-3">
                 <label for="phone_number">Phone Number:</label>
-                <input type="tel" class="form-control" id="phone_number" name="contactnumber"
+                <input type="number" class="form-control" id="phone_number" name="contactnumber"
                     placeholder="Enter phone number" pattern="[6789][0-9]{9}" required>
             </div>
             <div class="mb-3">
