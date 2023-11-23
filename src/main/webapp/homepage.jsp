@@ -116,35 +116,50 @@
 <section>
 
 
-<img src="/images/jobsearchhome.jpg" height="400px" width="1401px">
+<img src="/images/jobsearchhome.jpg" height="350px" width="1401px">
 </section>
  <section class="our_service_section">
     <h3 class="section_title">Our Top Recruiters</h3>
-    <p class="section_details">
-    Their impact extends far beyond mere hires, as they play a pivotal role in shaping the caliber and culture of our workforce. 
-    </p>
+   
     <!-- Feature Cards Container -->
     <div class="feature-carousel-container">
       <div class="feature-carousel">
         <!-- Feature Card 1 -->
         <div class="feature-card">
-          <img src="/images/onlinereading.jpg" alt="Service 1">
-          <h4 class="feature-title">Online Reading</h4><br><br>
-          <p class="feature-description">A built-in reader or viewer for eBooks, documents, and media directly within the platform.</p>
+          <img src="/images/wipro.jpg" alt="Service 1">
+          
+          <p class="feature-description">Wipro is an Indian multinational corporation that provides information technology, consultant and business process services.</p>
+          <br>
+          <h4 class="feature-title"> Salaries from 800000 LPA</h4><br>
         </div>
         <!-- Feature Card 2 -->
-        <div class="feature-card">
-          <img src="/images/download.png" alt="Service 2">
-          <h4 class="feature-title">Download Options</h4>
-          <p class="feature-description">Allow users to download resources for offline reading, with appropriate digital rights.</p>
+        <div class="feature-card"><br>
+          <img src="/images/google.png" alt="Service 2">
+          <p class="feature-description">Google LLC is an American multinational technology company focusing on artificial intelligence, online advertising, search engine technology, cloud computing.</p>
+          <br>
+           <h4 class="feature-title"> Salaries from 2000000 LPA</h4><br><br>
         </div>
         <!-- Feature Card 3 -->
         <div class="feature-card">
-          <img src="/images/securepayment.png" alt="Service 3">
-          <h4 class="feature-title">Secure Transactions</h4>
-          <p class="feature-description">If applicable, secure payment gateways for purchasing or renting digital content.</p>
+          <img src="/images/amazon.png" alt="Service 3">
+          <p class="feature-description">Amazon is an American Multinational technology company focusing on e-commerce, online advertising, digital streaming, and artificial intelligence</p>
+          <h4 class="feature-title"> Salaries from 2800000 LPA</h4><br><br>
+          
         </div>
         <!-- Add more feature cards as needed -->
+        <div class="feature-card">
+          <img src="/images/ibm.png" alt="Service 3">
+      
+          <p class="feature-description">The International Business Machines Corporation, is an American multinational  corporation Headquartered in New York</p>
+                    <h4 class="feature-title"> Salaries from 1400000 LPA</h4>
+          
+        </div>
+        <div class="feature-card">
+          <img src="/images/cisco.png" alt="Service 3"><br><br>
+          <p class="feature-description">Cisco Systems, Inc., commonly known as Cisco, is an American-based multinational digital communications technology</p><br>
+           <h4 class="feature-title"> Salaries from 900000 LPA</h4>
+          
+        </div>
       </div>
     </div>
   </section>
