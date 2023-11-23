@@ -123,11 +123,7 @@ public class ClientController
 	}
 
 	
-	@GetMapping("/")
-	public ModelAndView applicantlogin() {
-		ModelAndView mv=new ModelAndView("ApplicantLogin");
-		return mv;
-	}
+	
 	
 	
 	@PostMapping("registration")
@@ -559,7 +555,18 @@ public class ClientController
 	    	  
 	      }
 	    
+	    //23-11-2023
+	    @GetMapping("/")
+		public ModelAndView homepage() {
+			ModelAndView mv=new ModelAndView("homepage");
+			return mv;
+		}
+	   
+	    @GetMapping("ApplicantLogin")
+		public ModelAndView applicantlogin() {
+			ModelAndView mv=new ModelAndView("ApplicantLogin");
+			return mv;
+		}
 	    
-	      
 	  
 }

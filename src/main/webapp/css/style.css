@@ -10,7 +10,7 @@ nav{
   z-index: 99;
   width: 100%;
   
-  background:darkblue;
+  background:black;
 }
 nav .wrapper{
   position: relative;
@@ -45,20 +45,20 @@ nav .wrapper{
   transition: all 0.3s ease;
 }
 .nav-links li a:hover{
-  background:sky blue;
+  background:sky black;
 }
 .nav-links .mobile-item{
   display: none;
 }
 .nav-links .drop-menu{
   position: absolute;
-  background:darkblue;
+  background:black;
   width: 180px;
   line-height: 45px;
   top: 85px;
   opacity: 0;
   visibility: hidden;
-  box-shadow: darkblue;
+  box-shadow: black;
 }
 .nav-links li:hover .drop-menu,
 .nav-links li:hover .mega-box{
