@@ -25,6 +25,10 @@ public class Recruiter {
     private String contactno;
     @Column(name="recruiter_address",nullable=false,length = 1000)
     private String address;
+    
+    @Column(name="recruiter_loginstatus",nullable = false)
+    private boolean loginstatus;
+    
 	public int getId() {
 		return id;
 	}
@@ -65,6 +69,12 @@ public class Recruiter {
 	public String toString() {
 		return "Recruiter [id=" + id + ", companyname=" + companyname + ", email=" + email + ", password=" + password
 				+ ", contactno=" + contactno + ", address=" + address + "]";
+	}
+	public boolean isLoginstatus() {
+		return loginstatus;
+	}
+	public void setLoginstatus(boolean loginstatus) {
+		this.loginstatus = loginstatus;
 	}
     
     

@@ -9,19 +9,7 @@
   <title>TalentForge</title>
 
   <style>
-        input[type="file"] {
-            display: inline-block;
-            padding: 1px 5px;
-            font-size: 14px;
-            font-weight: bold;
-            text-align: center;
-            cursor: pointer;
-            background-color: grey ;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-        }
-
+      
         /* Style the custom button or container */
        
   .verification-container {
@@ -53,7 +41,7 @@
       color: #333; /* Dark color */
       line-height: 40px; /* Adjust line-height to match the height of the circle */
     }
-  .card {
+   .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 300px;
   margin: auto;
@@ -69,7 +57,7 @@
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
+      background-color: white;
       display: flex;
       height: 100vh;
     }
@@ -94,7 +82,7 @@
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
+      width: 99%;
       background-color: white;
       z-index: 1000;
       display: flex;
@@ -145,14 +133,14 @@
 
 
 
-    #right-half {
-      flex: 0 0 20%;
+     #right-half {
+      flex: 0 0 10%;
       background-color: #F9F9FB;
       color: blue;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px;
+      padding: 15px;
       box-sizing: border-box;
     }
 
@@ -193,7 +181,6 @@
       <div id="search-bar">
        <p style="color: darkblue; font-size: 20px;"> <a href="applicanthome"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆</a> <img src="/images/search.png" width="30px" height="30" /></p>
         <input type="text" placeholder="Search for jobs">
-        <button class="apply-btn">Search</button>
       </div>
 
       <!-- Sample job cards -->
