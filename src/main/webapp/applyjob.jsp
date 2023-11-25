@@ -61,7 +61,7 @@
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
+      width: 99%;
       background-color: white;
       z-index: 1000;
       display: flex;
@@ -222,7 +222,6 @@ a:hover {
       <div id="search-bar">
        <p style="color: darkblue; font-size: 20px;"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆 <img src="/images/search.png" width="30px" height="30" /></p>
         <input type="text" placeholder="Search for jobs">
-        <button class="apply-btn">Search</button>
       </div>
 
       <!-- Sample job cards -->
@@ -303,17 +302,12 @@ a:hover {
     <div id="right-half">
     <br><br><br><br>
       <div class="card">
-  <img src="/images/wipro.jpg" alt="John" style="width:100%">
-  <h1 style="color: black;">John Doe</h1>
-  <pstyle="color: black;" class="title">CEO & Founder, Example</p>
-  <p>Harvard University</p>
-  <div style="margin: 24px 0;">
-    <a href="#"><i class="fa fa-dribbble"></i></a> 
-    <a href="#"><i class="fa fa-twitter"></i></a>  
-    <a href="#"><i class="fa fa-linkedin"></i></a>  
-    <a href="#"><i class="fa fa-facebook"></i></a> 
-  </div>
+  <img src='displayApplicantimage?id=${cid}' alt="Upload Your image here" style="width:100%"   height="170px" id="profileimage">
+   <p style="color: black;">${fname} ${lname}  </p>
+  
+  
 </div>
+
 
       <nav>
         <a href="applicanthome">Home</a>
