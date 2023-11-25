@@ -180,7 +180,7 @@
     <div id="left-half">
       <div id="search-bar">
        <p style="color: darkblue; font-size: 20px;"> <a href="applicanthome"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆</a> <img src="/images/search.png" width="30px" height="30" /></p>
-        <input type="text" placeholder="Search for jobs">
+        <input type="search" id="searchInput" placeholder="Search for jobs">
       </div>
 
       <!-- Sample job cards -->
@@ -250,5 +250,27 @@
       });
     });
   </script>
+  
+  <script>
+        // Previous JavaScript code for adding to the cart
+
+        const searchInput = document.getElementById('searchInput');
+        const products = document.querySelectorAll('.job-card');
+
+        searchInput.addEventListener('input', function () {
+            const searchText = searchInput.value.toLowerCase();
+
+            products.forEach(product => {
+                const productName = product.querySelector('h3').textContent.toLowerCase();
+                if (productName.includes(searchText)) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+
 </body>
 </html>
