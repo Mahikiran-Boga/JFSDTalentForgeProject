@@ -20,7 +20,7 @@ public interface ApplicantService {
 	
 	public String applyJob(int jobid,int id,String jobtitle,String firstname,String lastname,String email,String dateofbirth
 			
-			,String experience,String contactno,String companyname,MultipartFile request,boolean status);
+	,String experience,String contactno,String companyname,MultipartFile request,boolean status);
 	
 	 public JobApplications checkJobApplication(String email,String jobtitle,String companyname);
 	 
@@ -35,6 +35,10 @@ public interface ApplicantService {
 	public boolean getApplicationStatus(int id,String title,String companyName);
 
 	public List<ViewApplicationStatus> viewapplicationStatus(int id,String jobtitle);
+	
+	public String withdrawapplication(int id, int applicantid);
+	
+	public String ApplicantupdateProfile(Applicant applicant);
 
 
 }

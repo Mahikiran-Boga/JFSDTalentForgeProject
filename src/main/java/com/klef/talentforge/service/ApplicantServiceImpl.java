@@ -1,6 +1,5 @@
 package com.klef.talentforge.service;
 
-import java.awt.print.Book;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
@@ -147,7 +146,34 @@ public class ApplicantServiceImpl implements ApplicantService {
 		return applicationStatusRepository.getStatusByIDAndTitle(jobtitle,id);
 	}
 
+	@Override
+	  public String withdrawapplication(int id, int applicantid) {
+	    jobapplicationsRepository.withdrawApplication(id, applicantid);
+	    return "Sucessfully withdrawn the applicantion";
+	  }
+
+	@Override
+	public String ApplicantupdateProfile(Applicant applicant)
+	{
+		int id=applicant.getId();
+		Optional<Applicant> app=applicantRepository.findById(id);
 	
+		if(app.isPresent()) {
+			Applicant a=app.get();
+			a.setId(id);
+			a.setEmail(applicant.getEmail());
+			a.setContactno(applicant.getContactno());
+			a.setAddress(applicant.getAddress());
+			a.setFirstname(applicant.getFirstname());
+			a.setLastname(applicant.getLastname());
+			a.setPassword(applicant.getPassword());
+			applicantRepository.save(a);
+			
+			
+		}
+		
+		return "Profile Updated Successfully!";
+	}
 	
 
 }

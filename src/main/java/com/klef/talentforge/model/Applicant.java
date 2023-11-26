@@ -29,7 +29,10 @@ public class Applicant {
 	    @Column(name="applicant_contactno",nullable=false,unique = true)
 	    private String contactno;
 	    @Column(name="applicant_address",nullable=false,length = 1000)
-	    private String Address;
+	    private String address;
+	    
+	    @Column(name="applicant_loginstatus")
+	    private boolean loginstatus;
 		public int getId() {
 			return id;
 		}
@@ -73,16 +76,22 @@ public class Applicant {
 			this.contactno = contactno;
 		}
 		public String getAddress() {
-			return Address;
+			return address;
 		}
 		public void setAddress(String address) {
-			Address = address;
+			this.address = address;
+		}
+		public boolean isLoginstatus() {
+			return loginstatus;
+		}
+		public void setLoginstatus(boolean loginstatus) {
+			this.loginstatus = loginstatus;
 		}
 		@Override
 		public String toString() {
 			return "Applicant [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", email=" + email
 					+ ", gender=" + gender + ", password=" + password + ", contactno=" + contactno + ", Address="
-					+ Address + "]";
+					+ address + "]";
 		}
 	    
 	    
