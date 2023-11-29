@@ -145,7 +145,7 @@
         </ul>
       </li>
       
-      <li><a href="#">Logout</a></li>
+      <li><a href="companylogin">Logout</a></li>
     </ul>
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>
@@ -171,9 +171,11 @@
       <label for="applicationStatus">Application Status:</label>
       <select name="applicationStatus" id="applicationStatus" required>
         <option value="" >Set Status</option>
-        <option value="Passed first Round">Passed first Round</option>
-        <option value="Passed second Round">Passed second Round</option>
-        <option value="Passed third Round">Passed third Round</option>
+        <option value="Profile Screening">Profile Screening</option>
+        <option value="Online Coding Test">Online Coding Test</option>
+        <option value="Technical/Managerial Interview">Technical/Managerial Interview</option>
+        <option value="HR Interview">HR Interview</option>
+         <option value="Offer">Offer</option>
         <option value="Application Rejected">Application Rejected</option>
       </select>
 
