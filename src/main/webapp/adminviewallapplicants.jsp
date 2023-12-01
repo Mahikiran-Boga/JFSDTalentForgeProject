@@ -91,7 +91,7 @@
         <input type="checkbox" id="showDrop">
         <label for="showDrop" class="mobile-item">Dropdown Menu</label>
         <ul class="drop-menu">
-          <li><a href="">VIEW ALL JOBS</a></li>
+          <li><a href="adminviewalljobs">VIEW ALL JOBS</a></li>
           <li><a href="">JOB APPLICATIONS</a></li>
         
         </ul>
