@@ -32,7 +32,8 @@ public interface RecruiterService
 	public String addApplicationStatus(ViewApplicationStatus viewApplicationStatus);
 	
 	
-	
+	public ViewApplicationStatus checkingduplicatestautsalreadythere(int id, String jobtitle,String status);
+
 	
 
 }
