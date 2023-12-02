@@ -22,8 +22,13 @@ public class Job
 	private String location;
 	@Column(name = "job_skills",length = 500,nullable = false)
 	private String skills;
+	
 	@Column(name = "job_description",length = 500,nullable = false)
 	private String description;
+	
+	@Column(name="job_posteddate", length = 10,nullable = false)
+	private String posteddate;
+	
 	@Column(name = "job_salary",length = 40,nullable = false)
 	private String salary;
 	@Column(name="comapany_image")
@@ -81,6 +86,12 @@ public class Job
 	}
 	public void setImage(Blob image) {
 		this.image = image;
+	}
+	public String getPosteddate() {
+		return posteddate;
+	}
+	public void setPosteddate(String posteddate) {
+		this.posteddate = posteddate;
 	}
 	
 	

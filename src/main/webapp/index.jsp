@@ -8,39 +8,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TalentForge</title>
 
+
   <style>
-      
-        /* Style the custom button or container */
-       
-  .verification-container {
-      display: flex;
+  .my-form {
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+}
 
-      align-items: center;
-    }
+.my-form .form-group {
+    margin-bottom: 15px;
+}
+.my-form select option {
+    padding: 15px;
+    font-size: 15px;
+}
+.my-form select {
+ font-size: 15px;
+    width: 100%; /* Set the width of the dropdown to 100% */
+}
+.my-form label {
+    margin-bottom: 15px;
+    font-weight: bold;
+    display: inline-block; /* Display label and input on the same line */
+    
+}
 
-    .verified-tick {
-      width: 40px;
-      height: 40px;
-      background-color: #2ecc71; /* Green color */
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 10px;
-    }
+.my-form input,
+.my-form select {
+    width: 41%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-left:10px;
+}
 
-    .tick-icon {
+.my-form button {
+    background-color: #778A35;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.my-form button:hover {
+    background-color: green;
+}
  
-      width: 25px;
-      height: 25px;
-      fill: #fff; /* White color */
-    }
 
-    .verification-text {
-      font-size: 18px;
-      color: #333; /* Dark color */
-      line-height: 40px; /* Adjust line-height to match the height of the circle */
-    }
    .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 300px;
@@ -48,6 +64,55 @@
   text-align: center;
   font-family: arial;
 }
+
+
+
+.my-form1 {
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.my-form1 .form-group {
+    margin-bottom: 15px;
+}
+.my-form1 select option {
+    padding: 15px;
+    font-size: 15px;
+}
+.my-form1 select {
+ font-size: 15px;
+    width: 100%; /* Set the width of the dropdown to 100% */
+}
+.my-form1 label {
+    margin-bottom: 15px;
+    font-weight: bold;
+    display: inline-block; /* Display label and input on the same line */
+    
+}
+
+.my-form1 input,
+.my-form1 select {
+    width: 18%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-left:10px;
+}
+
+.my-form1 button {
+    background-color: #778A35;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.my-form1 button:hover {
+    background-color: green;
+}
+  
 
 .title {
   color: grey;
@@ -108,7 +173,7 @@
     }
     .btn{
       padding: 4px 6px;
-      background-color: #4caf50;
+      background-color: #778A35;
       color: #fff;
       border: none;
       border-radius: 100px;
@@ -160,7 +225,7 @@
   
      .apply-btn {
   display: inline-block;
-  background-color: darkblue;
+  background-color: #778A35;
   color: #fff;
   padding: 8px 12px;
   border: none;
@@ -172,7 +237,7 @@
 }
 
 .apply-btn:hover {
-  background-color: navy; /* Change color on hover if desired */
+  background-color: #097969; /* Change color on hover if desired */
 }
   </style>
 </head>
@@ -180,11 +245,57 @@
     <div id="left-half">
       <div id="search-bar">
        <p style="color: darkblue; font-size: 20px;"> <a href="applicanthome"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆</a> <img src="/images/search.png" width="30px" height="30" /></p>
-        <input type="search" id="searchInput" placeholder="Search for jobs">
+        <input type="search" id="searchInput" placeholder="Search Jobs by Title">
       </div>
 
       <!-- Sample job cards -->
+     
      <br><br><br><br>
+     
+  <div class="wrapper">
+        <form class="my-form" action="searchbycompany" >
+          
+               
+          
+            <div class="form-group">
+                <label for="branch">Search Jobs By Company :</label>
+                <select id="companyname" name="companyname" required>
+                    <option value="">---Select Company---</option>
+                    <c:forEach items="${reclist}" var="rec">
+                    <option value="${rec.companyname}">${rec.id}&nbsp;&nbsp;--${rec.companyname}</option>
+                    
+                    </c:forEach>
+                    <option value="All">All Companies</option>
+                    
+                </select>
+           
+            <button type="submit">Search</button>
+             </div>
+        </form>
+    </div>
+     <div class="wrapper">
+        <form class="my-form1" method="get" action="searchbydate">
+               
+            <div class="form-group" >
+                <label for="branch">Search Jobs From Date Posted :&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <input type="date" name="fromdate" id="dateposted" pattern="\d{2}-\d{2}-\d{4}">
+            <button type="submit">Search</button>
+             </div>
+        </form>
+    </div>
+   
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
     <c:forEach items="${jobslist}" var="job">
     
     <div class="job-card">
@@ -230,10 +341,8 @@
       <nav>
         <a href="applicanthome">Home</a>
         <a href="myjobApplications">My Applications</a>
-        <a href="#">About</a>
-          <a href="#">Settings</a>
+          <a href="updateprofileApplicant">Update Profile</a>
             <a href="/">Logout</a>
-        <!-- Add more navigation items here -->
       </nav>
     </div>
      </div>
@@ -270,6 +379,51 @@
             });
         });
     </script>
+    
+    <script>
+    function filterFunction() {
+        var input, dropdown, items, i;
+        input = document.getElementById("searchInput");
+        dropdown = document.getElementById("dropdown");
+        items = Array.from(dropdown.getElementsByTagName("a"));
+
+        // Get the search input value
+        var filter = input.value.toUpperCase();
+
+        // Sort the items based on their text content and the search input
+        items.sort(function(a, b) {
+            var textA = a.textContent || a.innerText;
+            var textB = b.textContent || b.innerText;
+            return textA.toUpperCase().indexOf(filter) - textB.toUpperCase().indexOf(filter);
+        });
+
+        // Remove existing items from the dropdown
+        while (dropdown.firstChild) {
+            dropdown.removeChild(dropdown.firstChild);
+        }
+
+        // Add the sorted items back to the dropdown
+        items.forEach(function(item) {
+            dropdown.appendChild(item);
+        });
+
+        // Show or hide the dropdown based on the search input
+        dropdown.classList.toggle("show", filter.length > 0);
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('#searchInput')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            for (var i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+</script>
 
 
 </body>
