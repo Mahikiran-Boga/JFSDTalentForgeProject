@@ -1,12 +1,17 @@
 package com.klef.talentforge.model;
 
 import java.sql.Blob;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -36,6 +41,12 @@ public class Job
 	
 	@Column(name="company_name")
 	private String companyname;
+	
+	
+	
+    @OneToMany(mappedBy = "job", cascade = CascadeType.REMOVE)
+    private List<JobApplications> jobApplications;
+
 	
 	
 	  
@@ -92,6 +103,12 @@ public class Job
 	}
 	public void setPosteddate(String posteddate) {
 		this.posteddate = posteddate;
+	}
+	public List<JobApplications> getJobApplications() {
+		return jobApplications;
+	}
+	public void setJobApplications(List<JobApplications> jobApplications) {
+		this.jobApplications = jobApplications;
 	}
 	
 	

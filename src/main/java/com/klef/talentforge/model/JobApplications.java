@@ -5,7 +5,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -42,6 +44,9 @@ public class JobApplications {
     @Column(name="applicantion_status",nullable=false)
     private boolean applicationstatus;
     
+    @ManyToOne
+    @JoinColumn(name = "job_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+    private Job job;
     
     
     @Column(name = "bfileContent", columnDefinition = "LONGBLOB")
@@ -150,5 +155,13 @@ public class JobApplications {
 
 	public void setJobid(int jobid) {
 		this.jobid = jobid;
+	}
+
+	public Job getJob() {
+		return job;
+	}
+
+	public void setJob(Job job) {
+		this.job = job;
 	}
 }
