@@ -6,10 +6,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TalentForge</title>
+ <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'>
+  
+  <title>TalentForge | Applicant Home</title>
 
 
   <style>
+  .date-posted-box {
+    background-color: #f0f0f0; /* Background color */
+    padding: 10px; /* Padding around the content */
+    border: 1px solid #ccc; /* Border */
+    border-radius: 5px; /* Border radius for rounded corners */
+    display: inline-block; /* Display as an inline block to fit content */
+   width: 250px;
+  }
   .my-form {
     background: #f4f4f4;
     padding: 20px;
@@ -59,11 +69,21 @@
 
    .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 300px;
+  width:240px;
+  height:300px;
   margin: auto;
   text-align: center;
   font-family: arial;
+  border-radius: 15px;
 }
+ .card:hover {
+      transform: scale(1.05);
+    }
+
+    /* Content inside the card */
+    .card-content {
+      padding: 20px;
+    }
 
 
 
@@ -182,22 +202,26 @@
 
     .job-card {
       background-color: #fff;
-      border-radius: 8px;
+      border-radius: 20px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       padding: 8px;
       display: flex;
       flex-direction: column;
       gap: 2px;	
+       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
     }
 
     .job-card img {
-      max-width: 200px;
+      max-width: 205px;
       max-height: 100px;
       border-radius: 0%;
     }
 
-
-
+	      .job-card:hover {
+	    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Change the box-shadow on hover */
+	}
+		
      #right-half {
       flex: 0 0 10%;
       background-color: #F9F9FB;
@@ -229,7 +253,8 @@
   color: #fff;
   padding: 8px 12px;
   border: none;
-  border-radius: 4px;
+        border-radius: 20px;
+
     text-align: center; /* Center the text */
   
   text-decoration: none; /* Remove underline */
@@ -240,17 +265,19 @@
   background-color: #097969; /* Change color on hover if desired */
 }
   </style>
+  
+    <link rel="shortcut icon" type="image/png" href="/images/apple-touch-icon.png"/>
+  
 </head>
   <div id="container">
     <div id="left-half">
       <div id="search-bar">
-       <p style="color: darkblue; font-size: 20px;"> <a href="applicanthome"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆</a> <img src="/images/search.png" width="30px" height="30" /></p>
+       <p style="color: darkblue; font-size: 20px;"> <a href="applicanthome"> <img src="/images/navlogo.jpg" width="130px" height="50" /></a></p>
         <input type="search" id="searchInput" placeholder="Search Jobs by Title">
       </div>
 
-      <!-- Sample job cards -->
      
-     <br><br><br><br>
+     <br><br><br><br><br>
      
   <div class="wrapper">
         <form class="my-form" action="searchbycompany" >
@@ -318,7 +345,10 @@
       <p>Skills: <c:out value="${job.skills}"></c:out></p>
       <p>Description: <c:out value="${job.description}"></c:out></p>
       <p>Salary: <c:out value="${job.salary}"></c:out></p>
+      <p class="date-posted-box">Date Posted: <c:out value="${job.posteddate}" ></c:out></p> 
+      
         <a href="applyjob?id=${job.id}" class="apply-btn">Apply</a>
+     
     </div>
 
    </c:forEach>
@@ -326,7 +356,16 @@
    <br>
     <div id="right-half">
     <br><br><br><br>
+    
+    
+    
+    
+    
+    
+    
+    
       <div class="card">
+      <br>
        <form action="uploadapplicantprofileimage" method="post" enctype="multipart/form-data">
   <img src='displayApplicantimage?id=${cid}' alt="Upload Your image here" style="width:100%"   height="170px" id="profileimage">
    <input type="file" class="form-control"  name="ApplicantImage"
@@ -334,15 +373,15 @@
                 <button type="submit" class="btn">Change</button>
                
                 </form>
-  <p style="color: black;">${fname} ${lname}  </p>
+  <h3 style="color: #778A35;">${fname} ${lname}  </h3>
   
   
 </div>
       <nav>
-        <a href="applicanthome">Home</a>
-        <a href="myjobApplications">My Applications</a>
-          <a href="updateprofileApplicant">Update Profile</a>
-            <a href="/">Logout</a>
+      <a href="applicanthome"><i class="fa fa-home">  HOME</i></a>
+        <a href="myjobApplications"><i class="fa fa-envelope" >&nbsp;JOB APPLICATIONS</i></a>
+          <a href="updateprofileApplicant"><i class='fas fa-edit' > UPDATE PROFILE</i></a>
+            <a href="/"><i class="fas fa-sign-in-alt" > &nbsp;LOGOUT</i></a>
       </nav>
     </div>
      </div>
