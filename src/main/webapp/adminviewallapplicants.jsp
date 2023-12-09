@@ -5,10 +5,24 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>TalentForge Recruiter Home</title>
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/style.css">
+  <title>TalentForge | Admin All Applicants</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/adminstyle.css">
+          <link rel="shortcut icon" type="image/png" href="/images/apple-touch-icon.png"/>
+  
 <style>
-
+.background-container {
+            background-image: url('/images/recruiter.png');
+             background-size: cover;
+        background-position: center;
+        background-repeat:space;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+                width: 100%;
+            
+          
+        }
  .button {
   display: inline-block;
   padding: 10px 20px;
@@ -76,32 +90,24 @@
 <body>
 <nav>
   <div class="wrapper">
-    <div class="logo"><p style="color: white; font-size: 24px;"> <a href="adminhome"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆</a> <img src="/images/search.png" width="30px" height="30" /></p>
-</div>
+  <p > <a href="adminhome"> <img src="/images/adminnavlogo.jpg" width="200px" height="93" /></a></p>
     <input type="radio" name="slider" id="menu-btn">
     <input type="radio" name="slider" id="close-btn">
     <ul class="nav-links">
       <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
-      <li><a href="adminhome">Home</a></li>
-      <li><a href="viewallapplicants">View All Applicants</a></li>
-            <li><a href="viewallrecruiters">View All Companies</a></li>
+      <li><a href="adminhome"><i class="fa fa-home">  HOME</i></a></li> 
+      <li><a href="viewallapplicants"><i class="fa fa-eye" > ALL APPLICANTS</a></i></li>
+      <li><a href="viewallrecruiters"><i class="fa fa-eye" > ALL COMPANIES</a></i></li>
+      <li><a href="adminviewalljobs"><i class="fa fa-list-alt""> ALL JOBS</i></a></li>
+      <li><a href="viewqueries"><i class="fa fa-question-circle"></i>&nbsp;QUERIES</a></li>
       
-      <li>
-        <a href="" class="desktop-item">Actions</a>
-        <input type="checkbox" id="showDrop">
-        <label for="showDrop" class="mobile-item">Dropdown Menu</label>
-        <ul class="drop-menu">
-          <li><a href="adminviewalljobs">VIEW ALL JOBS</a></li>
-          <li><a href="">JOB APPLICATIONS</a></li>
-        
-        </ul>
-      </li>
-      
-      <li><a href="admin">Logout</a></li>
+      <li><a href="admin"><i class="fas fa-sign-in-alt" > &nbsp;LOGOUT</i></a></li>
     </ul>
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>
 </nav>
+<div class="background-container">
+
 
 <br>
 <br>
@@ -110,7 +116,6 @@
 <br>
  <h5 align="center" style="color:red">${message}</h5>
  
-  <p align="center" style="font-size: 34px;font-weight: bold; color: darkblue" >View All Applicants</p>
  <br>
  <table id="employee">
 			<tr bgcolor="darkblue" style="color: white">

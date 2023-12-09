@@ -5,10 +5,24 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Admin Viewall Job's</title>
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/style.css">
+  <title>TalentForge | Admin View Job By ID</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/adminstyle.css">
+          <link rel="shortcut icon" type="image/png" href="/images/apple-touch-icon.png"/>
+  
 <style>
-
+.background-container {
+            background-image: url('/images/recruiter.png');
+             background-size: cover;
+        background-position: center;
+        background-repeat:space;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+                width: 100%;
+            
+          
+        }
  .button {
   display: inline-block;
   padding: 10px 20px;
@@ -18,7 +32,7 @@
   cursor: pointer;
   border: none;
   border-radius: 5px;
-  background-color: sky	blue;
+  background-color:darkblue;
 }
 	
 #employee {
@@ -75,33 +89,37 @@
             margin: 0 auto;
             margin-top: 30px;
             padding: 20px;
+            
             background-color: #fff;
-            border-radius: 5px;
+            border-radius: 25px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                transition: box-shadow 0.3s ease; /* Adding a smooth transition effect for box-shadow change */
+            
         }
-        
+        .container:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Change the box-shadow on hover */
+}
         .profile-info {
-            text-align: center;
-            font-weight:bolder;
-            margin-bottom: 20px;
-        }
+    text-align: center;
+    margin-bottom: 20px;
+
+}
+
 
         .profile-pic {
-            width: 640px;
-            height: 200px;
+            width: 150px;
+            height: 70px;
 
-            object-fit: cover;
+            
         }
 
         .profile-name {
             font-size: 34px;
-            font-weight: bold;
             margin-top: 10px;
         }
 
         .profile-location {
-            color: #777;
-            font-weight:bolder;
+            color: grey;
             margin-top: 5px;
         }
 </style>
@@ -109,32 +127,25 @@
 <body>
 <nav>
   <div class="wrapper">
-    <div class="logo"><p style="color: white; font-size: 24px;"> <a href="adminhome"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆</a> <img src="/images/search.png" width="30px" height="30" /></p>
-</div>
+  <p > <a href="adminhome"> <img src="/images/adminnavlogo.jpg" width="200px" height="93" /></a></p>
+
     <input type="radio" name="slider" id="menu-btn">
     <input type="radio" name="slider" id="close-btn">
     <ul class="nav-links">
       <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
-      <li><a href="adminhome">Home</a></li>
-      <li><a href="viewallapplicants">View All Applicants</a></li>
-            <li><a href="viewallrecruiters">View All Companies</a></li>
+      <li><a href="adminhome"><i class="fa fa-home">  HOME</i></a></li> 
+      <li><a href="viewallapplicants"><i class="fa fa-eye" > ALL APPLICANTS</a></i></li>
+      <li><a href="viewallrecruiters"><i class="fa fa-eye" > ALL COMPANIES</a></i></li>
+      <li><a href="adminviewalljobs"><i class="fa fa-list-alt""> ALL JOBS</i></a></li>
+            <li><a href="viewqueries"><i class="fa fa-question-circle"></i>&nbsp;QUERIES</a></li>
       
-      <li>
-        <a href="" class="desktop-item">Actions</a>
-        <input type="checkbox" id="showDrop">
-        <label for="showDrop" class="mobile-item">Dropdown Menu</label>
-        <ul class="drop-menu">
-          <li><a href="adminviewalljobs">VIEW ALL JOBS</a></li>
-          <li><a href="">JOB APPLICATIONS</a></li>
-        
-        </ul>
-      </li>
-      
-      <li><a href="admin">Logout</a></li>
+      <li><a href="admin"><i class="fas fa-sign-in-alt" > &nbsp;LOGOUT</i></a></li>
     </ul>
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>
 </nav>
+</div>
+   <div class="background-container">
 
 <br>
 <br>
@@ -143,18 +154,16 @@
 <br>
  <h5 align="center" style="color:red">${message}</h5>
  
-  <p align="center" style="font-size: 34px;font-weight: bold; color: darkblue" >View Job By Id-><i style="font-family:serif; font-size: 65px"><c:out value="${j.companyname}" /></i></p>
  <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3"> <!-- Centered column -->
-                <!-- Left Column for Profile Details -->
                 <div class="profile-info">
-                    <img class="profile-pic" src="displaycompanyimage?id=${j.id}" alt="Profile Picture">
-                    <div class="profile-name">Role :- ${j.jobtitle}</div>
-                    <div class="profile-location">Location :-${j.location}</div>
-                    <div class="profile-location">Skill :-${j.skills}</div>
-                    <div class="profile-location">Description :-${j.description}</div>
-                    <div class="profile-location">Salary :-${j.salary}</div>
+                    <img class="profile-pic" src="displaycompanyimage?id=${j.id}" alt="Profile Picture" width="20%" height="100%">
+                    <div class="profile-name">Job Role : ${j.jobtitle}</div>
+                    <div class="profile-location">Job Location : ${j.location}</div>
+                    <div class="profile-location">Job Skills : ${j.skills}</div>
+                    <div class="profile-location">Job Description : ${j.description}</div>
+                    <div class="profile-location">Job Salary : ${j.salary}</div>
                    <div class="boxed-container">
 				  
 				</div><br>

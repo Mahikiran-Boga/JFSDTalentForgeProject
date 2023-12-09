@@ -4,13 +4,16 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.ListCrudRepository;
 import org.springframework.stereotype.Service;
 import com.klef.talentforge.model.Admin;
 import com.klef.talentforge.model.Applicant;
+import com.klef.talentforge.model.ContactForm;
 import com.klef.talentforge.model.Job;
 import com.klef.talentforge.model.Recruiter;
 import com.klef.talentforge.repository.AdminRepository;
 import com.klef.talentforge.repository.ApplicantRepository;
+import com.klef.talentforge.repository.ContactUsRepository;
 import com.klef.talentforge.repository.JobApplicationsRepository;
 import com.klef.talentforge.repository.JobRepository;
 import com.klef.talentforge.repository.RecruiterRepository;
@@ -33,6 +36,9 @@ public class AdminServiceImpl implements AdminService
 	
 	@Autowired
 	private RecruiterRepository recruiterRepository;
+	
+	@Autowired
+	private ContactUsRepository contactUsRepository;
 	
 	
 	
@@ -114,5 +120,11 @@ public class AdminServiceImpl implements AdminService
 	        }
 	    }
 
+	    
+	    @Override
+	    public List<ContactForm> viewallQueries()
+	    {
+	      return contactUsRepository.findAll();
+	    }
 
 }
