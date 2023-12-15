@@ -6,10 +6,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Applicant Registration</title>
+    <title>TalentForge | Applicant Registration</title>
       <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/style.css">
     
     <link rel="stylesheet" href="style.css">
+                <link rel="shortcut icon" type="image/png" href="/images/apple-touch-icon.png"/>
+    
     <style>
         /* General styling */
 
@@ -1639,22 +1641,21 @@ margin-top:300px;
 <body>
 <nav>
   <div class="wrapper">
-    <div class="logo"><p style="color: white; font-size: 24px;"> <a href="/"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆</a> <img src="/images/search.png" width="30px" height="30" /></p>
-</div>
-    <input type="radio" name="slider" id="menu-btn">
-    <input type="radio" name="slider" id="close-btn">
+  <p > <a href="/"> <img src="/images/greennavlogo.png" width="180px" height="80" /></a></p>
     <ul class="nav-links">
       <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
-      <li><a href="/">Home</a></li>
-      <li><a href="">About Us</a></li>
-      
-       <li><a href="ApplicantLogin">Applicant Login</a></li>
-      <li><a href="#">Company Login</a></li>
+      <li><a href="/"><i class="fa fa-home">  HOME</i></a></li>
+      <li><a href="viewalljobs"><i class='fas fa-bullhorn' > &nbsp;JOBS</i></a></li>
+      <li><a href="contactus"><i class="fa fa-phone"> &nbsp;CONTACT US</i></a></li>       <li><a href="ApplicantLogin"><i class='fas fa-user-tie'> &nbsp;APPLICANT LOGIN</i></a></li>
+       <li><a href="ApplicantLogin"><i class='fas fa-user-tie'> &nbsp;APPLICANT LOGIN</i></a></li>
+      <li><a href="companylogin"><i class='fa fa-building'>&nbsp; COMPANY LOGIN</i>
+      </a></li>
       
     </ul>
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>
 </nav>
+</div>
 <br><br><br><br>
     <div class="container">
     <div class="registration-section">

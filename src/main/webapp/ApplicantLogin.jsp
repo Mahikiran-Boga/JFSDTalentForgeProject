@@ -7,10 +7,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title> Applicant Login</title>
+    <title>TalentForge | Applicant Login</title>
       <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/style.css">
     
     <link rel="stylesheet" href="style.css">
+                <link rel="shortcut icon" type="image/png" href="/images/apple-touch-icon.png"/>
+    
     <style>
         /* General styling */
 
@@ -20,7 +22,18 @@
             padding: 0;
             background-color: #fff;
         }
+            .background-container {
+            background-image: url('/images/background.jpg'); /* Replace 'your-image-url.jpg' with the actual path to your image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh; /* Ensure the body takes up the full height of the viewport */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
+      
         .container {
             width: 500px;
             margin: 0 auto;
@@ -1610,24 +1623,25 @@
 <nav>
 
   <div class="wrapper">
-    <div class="logo"><p style="color: white; font-size: 24px;"> <a href="/"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆</a> <img src="/images/search.png" width="30px" height="30" /></p>
-</div>
+  <p > <a href="/"> <img src="/images/greennavlogo.png" width="180px" height="80" /></a></p>
     <input type="radio" name="slider" id="menu-btn">
     <input type="radio" name="slider" id="close-btn">
     <ul class="nav-links">
-      <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
-      <li><a href="/">Home</a></li>
-      <li><a href="">About Us</a></li>
-      
-       <li><a href="ApplicantLogin">Applicant Login</a></li>
-      <li><a href="companylogin">Company Login</a></li>
-      
-    </ul>
+    <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+      <li><a href="/"><i class="fa fa-home">  HOME</i></a></li>
+      <li><a href="viewalljobs"><i class='fas fa-bullhorn' > &nbsp;JOBS</i></a></li>
+      <li><a href="contactus"><i class="fa fa-phone"> &nbsp;CONTACT US</i></a></li>      
+       <li><a href="ApplicantLogin"><i class='fas fa-user-tie'> &nbsp;APPLICANT LOGIN</i></a></li>
+      <li><a href="companylogin"><i class='fa fa-building'>&nbsp; COMPANY LOGIN</i>
+      </a></li>
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>
 </nav>
- 
-    <br><br><br><br>
+
+ </div>
+    <br><br><br>
+    <div class="background-container">
+        <div class="content">
     <div class="container">
     																																		
     	<div class="card">
@@ -1635,7 +1649,7 @@
      <span class="blink">
   <h5 align="center" style="color:red">${message}</h5>
   </span>
-                <p style="color: darkblue; font-size: 24px;"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆 𝑳𝒐𝒈𝒊𝒏<img src="/images/search.png" width="30px" height="30" /></p>
+ <a href="ApplicantLogin"><img src="/images/navlogo.jpg"   width="100px" height="40" /></a> &nbsp;<p style="display:inline-block;  color: darkblue; font-size: 30px;"> 𝑨𝒑𝒑𝒍𝒊𝒄𝒂𝒏𝒕 𝑳𝒐𝒈𝒊𝒏</p>
 
         <form action="checkapplicantlogin" method="post">
             <div class="mb-3">
@@ -1658,7 +1672,8 @@
        
     </div>
     </div>
-    
+     </div>
+    </div>
     </div>
   
     

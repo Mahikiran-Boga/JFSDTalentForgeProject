@@ -3,6 +3,7 @@ package com.klef.talentforge.service;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,12 +11,16 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.klef.talentforge.model.Applicant;
 import com.klef.talentforge.model.ApplicantImage;
+import com.klef.talentforge.model.ContactForm;
 import com.klef.talentforge.model.Job;
 import com.klef.talentforge.model.JobApplications;
+import com.klef.talentforge.model.Recruiter;
 import com.klef.talentforge.model.ViewApplicationStatus;
 import com.klef.talentforge.repository.ApplicantRepository;
+import com.klef.talentforge.repository.ContactUsRepository;
 import com.klef.talentforge.repository.JobApplicationsRepository;
 import com.klef.talentforge.repository.JobRepository;
+import com.klef.talentforge.repository.RecruiterRepository;
 import com.klef.talentforge.repository.Uploadapplicantprofileimage;
 import com.klef.talentforge.repository.ViewApplicationStatusRepository;
 
@@ -40,6 +45,11 @@ public class ApplicantServiceImpl implements ApplicantService {
 	@Autowired
 	private ViewApplicationStatusRepository applicationStatusRepository;
 	
+	@Autowired
+	private RecruiterRepository recruiterRepository;
+	
+	 @Autowired
+	 private ContactUsRepository contactUsRepository;
 	
 	@Override
 	public String register(Applicant applicant) {
@@ -140,10 +150,9 @@ public class ApplicantServiceImpl implements ApplicantService {
 	}
 
 	@Override
-	public List<ViewApplicationStatus> viewapplicationStatus(int id,String jobtitle) {
-		
-		System.err.println(jobtitle);
-		return applicationStatusRepository.getStatusByIDAndTitle(jobtitle,id);
+	public List<ViewApplicationStatus> viewmyjobapplicationStatus(int id,String jobtitle) {
+
+		return applicationStatusRepository.getStatusByIDAndTitle(id,jobtitle);
 	}
 
 	@Override
@@ -174,6 +183,36 @@ public class ApplicantServiceImpl implements ApplicantService {
 		
 		return "Profile Updated Successfully!";
 	}
+
+	@Override
+	public List<Recruiter> viewallCompanies() 
+	{
+		return recruiterRepository.findAll();
+	}
+
+	@Override
+	public List<Job> viewJobsByCompanyName(String companyname) {
+		
+		return jobRepository.viewalljobsbycompanyname(companyname);
+	}
+
+	@Override
+	public List<Job> viewAllJobsByDate(String fromdate) {
+		
+		return jobRepository.viewallJobsByDate(fromdate);
+	}
+	
+
+	 
+	  
+
+
+	@Override
+	  public String contactusform(ContactForm contactForm) {
+	    contactUsRepository.save(contactForm);
+	    return "ThankYou 😊 For Contacting 🤝";
+	  }
+
 	
 
 }

@@ -1,13 +1,16 @@
 package com.klef.talentforge.service;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.web.multipart.MultipartFile;
 
 import com.klef.talentforge.model.Applicant;
 import com.klef.talentforge.model.ApplicantImage;
+import com.klef.talentforge.model.ContactForm;
 import com.klef.talentforge.model.Job;
 import com.klef.talentforge.model.JobApplications;
+import com.klef.talentforge.model.Recruiter;
 import com.klef.talentforge.model.ViewApplicationStatus;
 
 public interface ApplicantService {
@@ -34,11 +37,18 @@ public interface ApplicantService {
 	
 	public boolean getApplicationStatus(int id,String title,String companyName);
 
-	public List<ViewApplicationStatus> viewapplicationStatus(int id,String jobtitle);
+	public List<ViewApplicationStatus> viewmyjobapplicationStatus(int id,String jobtitle);
 	
 	public String withdrawapplication(int id, int applicantid);
 	
 	public String ApplicantupdateProfile(Applicant applicant);
-
+	
+	public List<Recruiter> viewallCompanies();
+	
+	public List<Job> viewJobsByCompanyName(String companyname);
+	
+	public List<Job> viewAllJobsByDate(String fromdate);
+    
+	public String contactusform(ContactForm contactForm);
 
 }
